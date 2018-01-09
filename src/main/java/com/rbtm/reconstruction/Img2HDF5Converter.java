@@ -1,7 +1,5 @@
 package com.rbtm.reconstruction;
 
-
-import ch.systemsx.cisd.base.mdarray.MDByteArray;
 import ch.systemsx.cisd.hdf5.HDF5Factory;
 import ch.systemsx.cisd.hdf5.IHDF5ByteWriter;
 
@@ -13,10 +11,7 @@ import java.io.IOException;
 import java.util.*;
 
 
-
-public class DataPrepare {
-    private static final int NUM_EXECUTORS=4;
-
+public class Img2HDF5Converter {
     private static List<File> getImageFileList(String dirPath){
         File sourceDir = new File(dirPath);
 
@@ -45,10 +40,8 @@ public class DataPrepare {
     }
 
 
-
-    public static void main(String[] args) throws IOException {
-        String sourceDirPath = args[0];
-        List<File> images= getImageFileList(sourceDirPath);
+    public void convert(String inputDirPath, String outputH5Path) throws IOException {
+        List<File> images= getImageFileList(inputDirPath);
 
         int[] dataSize = getDataSetSize(images);
 
@@ -58,14 +51,11 @@ public class DataPrepare {
 
         System.out.println(Arrays.toString(dataSize));
 
-
-
-        IHDF5ByteWriter writer = HDF5Factory.open("myfile.h5").int8();
+        IHDF5ByteWriter writer = HDF5Factory.open(outputH5Path).int8();
 
         writer.createMatrix("Results", x, y*z, 1, y*z);
         byte[][] imgBytes = new byte[1][y*z];
 
-        long startTime = System.nanoTime();
         for (int i=0; i< x; ++i){
             BufferedImage bufferedImage = ImageIO.read(images.get(i));
 
@@ -78,9 +68,16 @@ public class DataPrepare {
                 e.printStackTrace();
             }
         }
+    }
 
+    //args: inputDirPath, outputH5Path
+    public static void main(String[] args) throws IOException {
+        Img2HDF5Converter test = new Img2HDF5Converter();
 
+        long startTime = System.nanoTime();
+        test.convert(args[0], args[1]);
         long endTime = System.nanoTime();
+
         System.out.println((double)(endTime - startTime)/1000000000.0);
     }
 }

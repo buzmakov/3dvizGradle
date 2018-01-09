@@ -53,7 +53,8 @@ public class Img2HDF5Converter {
 
         IHDF5ByteWriter writer = HDF5Factory.open(outputH5Path).int8();
 
-        writer.createMatrix("Results", x, y*z, 1, y*z);
+        writer.createMatrix(Constants.H5_OBJECT, x, y*z, 1, y*z);
+        //writer.createMDArray("Re");
         byte[][] imgBytes = new byte[1][y*z];
 
         for (int i=0; i< x; ++i){

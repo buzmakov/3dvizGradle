@@ -2,10 +2,13 @@ package com.rbtm.reconstruction;
 
 import java.awt.image.*;
 import java.io.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import javax.imageio.*;
 
 
-public class ImgTransformations<T> {
+public class ImgTransformations{
     private int[][] myPixels;
 
     public ImgTransformations(File file) {
@@ -52,9 +55,22 @@ public class ImgTransformations<T> {
         int width = image.getWidth();
         int height = image.getHeight();
         int[][] pixels = new int[height][width];
+
+        ExecutorService executor = Executors.newFixedThreadPool(Constants.THREAD_NUM);
         for (int row = 0; row < height; row++) {
-            image.getRGB(0, row, width, 1, pixels[row], 0, width);
+            int finalRow = row;
+            executor.submit(() -> {
+                image.getRGB(0, finalRow, width, 1, pixels[finalRow], 0, width);
+                    });
         }
+
+        try {
+            executor.shutdown();
+            executor.awaitTermination(1, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         return pixels;
     }
 }

@@ -1,14 +1,16 @@
 package com.rbtm.reconstruction;
 
+import ch.systemsx.cisd.base.mdarray.MDIntArray;
 import ch.systemsx.cisd.hdf5.HDF5Factory;
-import ch.systemsx.cisd.hdf5.IHDF5ByteWriter;
+import ch.systemsx.cisd.hdf5.IHDF5IntWriter;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class Img2HDF5Converter {
@@ -32,13 +34,12 @@ public class Img2HDF5Converter {
     private static int[] getDataSetSize(List<File> imgs) throws IOException {
         BufferedImage bimg = ImageIO.read(imgs.get(0));
 
-        int x = imgs.size();
-        int y = bimg.getWidth();
-        int z = bimg.getHeight();
+        int x = bimg.getWidth();
+        int y = bimg.getHeight();
+        int z = imgs.size();
 
         return new int[]{x, y, z};
     }
-
 
     public void convert(String inputDirPath, String outputH5Path) throws IOException {
         List<File> images= getImageFileList(inputDirPath);
@@ -51,23 +52,33 @@ public class Img2HDF5Converter {
 
         System.out.println(Arrays.toString(dataSize));
 
-        IHDF5ByteWriter writer = HDF5Factory.open(outputH5Path).int8();
+        IHDF5IntWriter writer = HDF5Factory.open(outputH5Path).int32();
 
-        writer.createMatrix(Constants.H5_OBJECT, x, y*z, 1, y*z);
-        //writer.createMDArray("Re");
-        byte[][] imgBytes = new byte[1][y*z];
+        writer.createMDArray(Constants.H5_OBJECT, new long[]{z, y, x}, new int[]{1, y, x});
+        int[][][] buffer = new int[1][y][x];
 
-        for (int i=0; i< x; ++i){
-            BufferedImage bufferedImage = ImageIO.read(images.get(i));
+        ExecutorService executor = Executors.newFixedThreadPool(Constants.THREAD_NUM);
+        long startTime = System.nanoTime();
+        for (int i=0; i< z; ++i){
+            int finalI = i;
+            executor.submit(() -> {
+                try {
+                    BufferedImage bufferedImage = ImageIO.read(images.get(finalI));
+                    buffer[0] = ImgTransformations.imageToPixels(bufferedImage);
+                    MDIntArray mdBuffer = new MDIntArray(buffer[0], new int[]{1, y, x});
+                    writer.writeMDArrayBlock("Results", mdBuffer, new long[]{finalI, 0, 0});
 
-            imgBytes[0] = ((DataBufferByte) bufferedImage.getRaster().getDataBuffer()).getData();
+                    long endTime = System.nanoTime();
 
-            try {
-                writer.writeMatrixBlock("Results", imgBytes, i, 0);
-            } catch (Exception e) {
-                System.out.println("Error while write to h5 file");
-                e.printStackTrace();
-            }
+                    System.out.println((double)(endTime - startTime)/1000000000.0);
+                } catch (Exception e) {
+                    System.out.println("Error while write to h5 file");
+                    e.printStackTrace();
+                }
+            });
+
+
+
         }
     }
 

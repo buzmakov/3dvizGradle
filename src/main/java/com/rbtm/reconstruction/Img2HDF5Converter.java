@@ -65,15 +65,4 @@ public class Img2HDF5Converter {
             e.printStackTrace();
         }
     }
-
-    //args: inputDirPath, outputH5Path
-    public static void main(String[] args) throws IOException {
-        Img2HDF5Converter test = new Img2HDF5Converter(args[0], args[1]);
-
-        long startTime = System.nanoTime();
-        test.convert();
-        long endTime = System.nanoTime();
-
-        System.out.println((double)(endTime - startTime)/Constants.NANO_IN_SEC);
-    }
 }

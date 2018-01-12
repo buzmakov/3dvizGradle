@@ -1,10 +1,8 @@
 package com.rbtm.reconstruction;
 
+import ch.systemsx.cisd.base.mdarray.MDFloatArray;
 import ch.systemsx.cisd.base.mdarray.MDIntArray;
-import ch.systemsx.cisd.hdf5.HDF5Factory;
-import ch.systemsx.cisd.hdf5.IHDF5IntReader;
-import ch.systemsx.cisd.hdf5.IHDF5ObjectReadOnlyInfoProviderHandler;
-import ch.systemsx.cisd.hdf5.IHDF5Reader;
+import ch.systemsx.cisd.hdf5.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -12,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static java.awt.image.BufferedImage.TYPE_INT_RGB;
+import static java.lang.Math.toIntExact;
 
 
 /*
@@ -26,23 +25,29 @@ public class HDF52ImgConverter {
         this.outputDirPath = outputDirPath;
     }
 
-    public void convert() throws Exception {
-        IHDF5Reader reader = HDF5Factory.openForReading(inputH5Path);
-
+    private DataShape getDimension(IHDF5Reader reader) throws Exception {
         IHDF5ObjectReadOnlyInfoProviderHandler infoReader = reader.object();
-        int dataRank = infoReader.getArrayRank(Constants.H5_OBJECT);
+
+        int dataRank = infoReader.getRank(Constants.H5_OBJECT);
         if (dataRank != 3){
             throw new Exception("data is not 3d matrix");
         }
-        int[] demension = infoReader.getArrayDimensions(Constants.H5_OBJECT);
-        int num = demension[0]; //num of images
-        int height = demension[1]; //heigth
-        int width = demension[2]; //width
+        long [] demension = infoReader.getDimensions(Constants.H5_OBJECT);
+        int num = toIntExact(demension[0]);
+        int height = toIntExact(demension[1]);
+        int width = toIntExact(demension[2]);
 
-        IHDF5IntReader intReader = reader.int32();
-        for (int i=0; i<num; ++i) {
-            MDIntArray mdArr = intReader.readMDArrayBlockWithOffset(Constants.H5_OBJECT, new int[]{1, height, width}, new long[]{i, 0, 0});
-            int[][] imgArr = mdArr.toMatrix();
+        return new DataShape(num, height, width);
+    }
+
+    public void convert() throws Exception {
+        IHDF5Reader reader = HDF5Factory.openForReading(new File(inputH5Path));
+        DataShape shape = getDimension(reader);
+
+        IHDF5FloatReader fReader = reader.float32();
+        for (int i=0; i<shape.getNum(); ++i) {
+            MDFloatArray mdArr = fReader.readMDArrayBlockWithOffset(Constants.H5_OBJECT, new int[]{1, shape.getHeight(), shape.getWidth()}, new long[]{i, 0, 0});
+            float[][] imgArr = mdArr.toMatrix();
             BufferedImage img = ImgTransformations.pixelsToImage(imgArr);
             File outputfile = new File(outputDirPath + "/" + i +  ".png");
             ImageIO.write(img, "png", outputfile);

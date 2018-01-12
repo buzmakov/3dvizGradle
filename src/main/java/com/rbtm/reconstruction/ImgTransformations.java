@@ -2,6 +2,7 @@ package com.rbtm.reconstruction;
 
 import java.awt.image.*;
 import java.io.*;
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -70,7 +71,7 @@ public class ImgTransformations{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        System.out.println(Arrays.toString(pixels[10]));
         return pixels;
     }
 }

@@ -1,8 +1,11 @@
-package com.rbtm.reconstruction;
+package com.rbtm.reconstruction.Converters;
 
 import ch.systemsx.cisd.base.mdarray.MDIntArray;
 import ch.systemsx.cisd.hdf5.HDF5Factory;
 import ch.systemsx.cisd.hdf5.IHDF5IntWriter;
+import com.rbtm.reconstruction.Constants;
+import com.rbtm.reconstruction.Utils.ImgTransformations;
+import com.rbtm.reconstruction.Utils.Utils;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -17,16 +20,11 @@ import java.util.concurrent.TimeUnit;
 /*
 Class for convert set of images to h5 file
  */
-public class Img2HDF5Converter {
-    private String inputDirPath;
-    private String outputH5Path;
+public class ImgsToH5Converter implements Converter {
 
-    public Img2HDF5Converter(String inputDirPath, String outputH5Path) {
-        this.inputDirPath = inputDirPath;
-        this.outputH5Path = outputH5Path;
-    }
-
+    @Override
     public void convert() throws IOException {
+        /*
         List<File> images= Utils.getImageFileList(inputDirPath);
 
         int[] dataSize = Utils.getDataSetSize(images);
@@ -64,5 +62,6 @@ public class Img2HDF5Converter {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        */
     }
 }

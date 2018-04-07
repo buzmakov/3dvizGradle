@@ -1,8 +1,10 @@
 package com.rbtm.reconstruction.Utils;
 
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
+import java.util.stream.IntStream;
 
 public class ImageUtils {
     public static BufferedImage Mat2BufferedImage(Mat m)
@@ -25,5 +27,16 @@ public class ImageUtils {
         final byte[] targetPixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
         System.arraycopy(b, 0, targetPixels, 0, b.length);
         return image;
+    }
+
+
+    public static Mat matrix2Mat(float[][] matrix) {
+        int h = matrix.length;
+        int w = matrix[0].length;
+
+        Mat resultMat = new Mat(h, w, CvType.CV_32F);
+        IntStream.range(0, h).parallel().forEach(i -> resultMat.put(i, 0, matrix[i]));
+
+        return resultMat;
     }
 }

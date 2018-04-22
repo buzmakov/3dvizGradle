@@ -5,4 +5,5 @@ public final class Constants {
     public static final int THREAD_NUM = Runtime.getRuntime().availableProcessors();
     public static final double NANO_IN_SEC = 1000000000.0;
     public static final String PNG_FORMAT = "png";
+    public static final int numOfBlocks = 4;
 }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Utils {
     public static List<File> getImageFileList(String dirPath){
@@ -36,4 +37,15 @@ public class Utils {
 
         return new int[]{x, y, z};
     }
+
+    public static float getMax(float[] arr) {
+        return (float)IntStream.range(0, arr.length).
+                mapToDouble(i -> arr[i]).max().getAsDouble();
+    }
+
+    public static float getMin(float[] arr) {
+        return (float)IntStream.range(0, arr.length).
+                mapToDouble(i -> arr[i]).min().getAsDouble();
+    }
+
 }

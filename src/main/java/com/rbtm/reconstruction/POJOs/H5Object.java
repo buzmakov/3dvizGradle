@@ -3,6 +3,7 @@ package com.rbtm.reconstruction.POJOs;
 import ch.systemsx.cisd.hdf5.*;
 import com.rbtm.reconstruction.Exceptions.DimensionMismatchException;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.io.File;
 
@@ -46,5 +47,5 @@ class H5Object {
         this.type = getType(metaInfo);
         this.shape = getDimension(metaInfo);
         this.abstractReader = abstractReader;
-    }
+        }
 }

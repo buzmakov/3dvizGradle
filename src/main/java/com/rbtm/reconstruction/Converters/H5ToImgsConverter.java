@@ -27,19 +27,15 @@ public class H5ToImgsConverter implements Converter {
     private String outputDir;
     private String h5filePath;
 
-    private String outputImgFormat(int i) {
-        return outputDir +
-                "/img_" +
-                i +
-                "_" +
-                Thread.currentThread().getName() +
-                "." +
-                Constants.PNG_FORMAT;
-    }
-
     public H5ToImgsConverter(String inputDir, String outputDir, String h5FileName) {
         this.outputDir = outputDir;
         this.h5filePath = inputDir + "/" + h5FileName;
+    }
+
+    private String outputImgFormat(int i) {
+        return outputDir +
+                "/img_" + i +
+                "." + Constants.PNG_FORMAT;
     }
 
     @Override
@@ -59,8 +55,9 @@ public class H5ToImgsConverter implements Converter {
         IntStream.range(0, Constants.numOfBlocks).parallel().forEach( i -> {
             float[] imgFlatArr = h5Obj.getSliceArray(i*blockSize, blockDimensions);
             List<Mat> matArr = ImageUtils.arrDouble2arrMat(imgFlatArr, blockSize, shape.getHeight(), shape.getWidth());
-            for(Mat m: matArr){
-                Imgcodecs.imwrite(outputImgFormat(i), m);
+
+            for(int mi = 0; mi < matArr.size(); ++mi){
+                Imgcodecs.imwrite(outputImgFormat(i*blockSize + mi), matArr.get(mi));
             }
         });
 

@@ -1,4 +1,4 @@
-package com.rbtm.reconstruction.POJOs;
+package com.rbtm.reconstruction.DataObjects;
 
 
 import lombok.AccessLevel;

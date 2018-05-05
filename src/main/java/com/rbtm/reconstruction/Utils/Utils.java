@@ -26,26 +26,4 @@ public class Utils {
 
         return listOfFiles;
     }
-
-    //return array [x, y, z]. For y, x component use first image
-    public static int[] getDataSetSize(List<File> imgs) throws IOException {
-        BufferedImage bimg = ImageIO.read(imgs.get(0));
-
-        int x = bimg.getWidth();
-        int y = bimg.getHeight();
-        int z = imgs.size();
-
-        return new int[]{x, y, z};
-    }
-
-    public static float getMax(float[] arr) {
-        return (float)IntStream.range(0, arr.length).
-                mapToDouble(i -> arr[i]).max().getAsDouble();
-    }
-
-    public static float getMin(float[] arr) {
-        return (float)IntStream.range(0, arr.length).
-                mapToDouble(i -> arr[i]).min().getAsDouble();
-    }
-
 }

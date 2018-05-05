@@ -1,20 +1,24 @@
-package com.rbtm.reconstruction.POJOs;
+package com.rbtm.reconstruction.DataObjects;
 
 import ch.systemsx.cisd.hdf5.*;
 import com.rbtm.reconstruction.Exceptions.DimensionMismatchException;
 import lombok.Getter;
-import lombok.Setter;
+import org.opencv.core.Mat;
 
 import java.io.File;
+import java.util.List;
 
 import static java.lang.Math.toIntExact;
 
-class H5Object {
+abstract class H5Object implements IMatDatasetObject {
     @Getter  DataShape shape;
     @Getter  HDF5DataClass type;
     @Getter  String objectName;
+    @Getter int numOfBlocks;
+    @Getter int blockSize;
+    @Getter int currentBlock;
     IHDF5Reader abstractReader;
-    private HDF5DataSetInformation metaInfo;
+    int[] blockDimensions;
 
 
     private HDF5DataClass getType(HDF5DataSetInformation metaInfo){
@@ -39,13 +43,28 @@ class H5Object {
         return infoReader.getDataSetInformation(ObjectName);
     }
 
-    public H5Object(String h5FilePath, String ObjectName) throws DimensionMismatchException {
+    H5Object(String h5FilePath, String ObjectName, int numOfBlocks) throws DimensionMismatchException {
         IHDF5Reader abstractReader = HDF5Factory.openForReading(new File(h5FilePath));
 
         this.objectName = ObjectName;
-        this.metaInfo = getMetaInformation(abstractReader, ObjectName);
+        HDF5DataSetInformation metaInfo = getMetaInformation(abstractReader, ObjectName);
         this.type = getType(metaInfo);
         this.shape = getDimension(metaInfo);
         this.abstractReader = abstractReader;
+
+        this.numOfBlocks = numOfBlocks;
+        this.blockSize = shape.getNum()/numOfBlocks;
+        this.blockDimensions = new int[]{blockSize, shape.getHeight(), shape.getWidth()};
+        this.currentBlock=0;
         }
+
+    public boolean hasNextBlock(){
+        return currentBlock < numOfBlocks;
+    }
+
+    public int BlockPassed() {
+        return currentBlock -1;
+    }
+
+    public abstract List<Mat> getNextBlockMat();
 }

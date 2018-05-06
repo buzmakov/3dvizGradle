@@ -2,13 +2,12 @@ package com.rbtm.reconstruction.DataObjects;
 
 import com.rbtm.reconstruction.Constants;
 import com.rbtm.reconstruction.Exceptions.DimensionMismatchException;
-import com.rbtm.reconstruction.Utils.ArrayUtils;
 
 
 import ch.systemsx.cisd.base.mdarray.MDFloatArray;
 import ch.systemsx.cisd.hdf5.*;
+import com.rbtm.reconstruction.Utils.CustomArrayUtils;
 import com.rbtm.reconstruction.Utils.Timer;
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
 import java.util.ArrayList;
@@ -73,8 +72,8 @@ public class H5FloatObject extends H5Object{
 
         timer.nextStage("filling mat array");
 
-        float max = ArrayUtils.getMax(imgFlatArr);
-        float min = ArrayUtils.getMin(imgFlatArr);
+        float max = CustomArrayUtils.getMax(imgFlatArr);
+        float min = CustomArrayUtils.getMin(imgFlatArr);
         float diff = max-min;
         int imgSize = height*width;
 
@@ -101,7 +100,7 @@ public class H5FloatObject extends H5Object{
 
     private float[] getBlockArray(int i, int[] blockDimensions){
         MDFloatArray mdArr = getMdArray(i, blockDimensions);
-        return mdArr.getAsFlatArray();
+        return CustomArrayUtils.resize(mdArr.getAsFlatArray(), step);
     }
 
     private float[] getNextBlock(){

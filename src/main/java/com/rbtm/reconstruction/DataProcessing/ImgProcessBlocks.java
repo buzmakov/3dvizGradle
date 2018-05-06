@@ -13,8 +13,6 @@ public class ImgProcessBlocks {
             Imgproc.threshold(i, i, thresh, 255, Imgproc.THRESH_BINARY);
                 }
         );
-
-
         return block;
     }
 }

@@ -3,8 +3,8 @@ package com.rbtm.reconstruction.DataProcessing;
 import com.rbtm.reconstruction.Constants;
 import com.rbtm.reconstruction.DataObjects.Circle;
 import com.rbtm.reconstruction.DataObjects.DataShape;
-import com.rbtm.reconstruction.Utils.ArrayUtils;
 
+import com.rbtm.reconstruction.Utils.CustomArrayUtils;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
@@ -34,7 +34,7 @@ public class CircleDetector {
         }
         this.shape = new DataShape(1, sourceImg.rows(), sourceImg.cols());
         this.center = new Point(shape.getWidth()/2, shape.getHeight()/2);
-        this.radius = ArrayUtils.getMin(new int[]{shape.getWidth() - (int)center.x, shape.getHeight() - (int)center.y});
+        this.radius = CustomArrayUtils.getMin(new int[]{shape.getWidth() - (int)center.x, shape.getHeight() - (int)center.y});
     }
 
     private Mat generateCircleImg(int radius) {
@@ -53,7 +53,7 @@ public class CircleDetector {
         float[] pixelArray = new float[Math.toIntExact(workImg.total())];
         workImg.get(0,0, pixelArray);
 
-        float sum = ArrayUtils.getSum(pixelArray)/255;
+        float sum = CustomArrayUtils.getSum(pixelArray)/255;
         float circleLength = (float) (2*Math.PI*radius);
 
         return sum/circleLength;

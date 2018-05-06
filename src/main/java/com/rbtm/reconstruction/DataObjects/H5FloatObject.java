@@ -7,6 +7,7 @@ import com.rbtm.reconstruction.Utils.ArrayUtils;
 
 import ch.systemsx.cisd.base.mdarray.MDFloatArray;
 import ch.systemsx.cisd.hdf5.*;
+import com.rbtm.reconstruction.Utils.Timer;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
@@ -63,23 +64,21 @@ public class H5FloatObject extends H5Object{
     }
     */
     private static List<Mat> arrFloat2arrMat(float[] imgFlatArr, int height, int width) {
-        long startTime;
-        long endTime;
+        Timer timer = new Timer();
         int blockSize = imgFlatArr.length/(height*width);
 
-        startTime = System.currentTimeMillis();
+        timer.startStage("creating mat array");
         List<Mat> arrMat = new ArrayList<>(blockSize);
         IntStream.range(0, blockSize).forEach(i -> arrMat.add(new Mat(height, width, Constants.DEFAULT_MAT_TYPE)));
 
-        endTime = System.currentTimeMillis();
-        System.out.println("creating mat array: " + (endTime - startTime)/1000 + " s");
-
-        startTime = System.currentTimeMillis();
+        timer.nextStage("filling mat array");
 
         float max = ArrayUtils.getMax(imgFlatArr);
         float min = ArrayUtils.getMin(imgFlatArr);
         float diff = max-min;
         int imgSize = height*width;
+
+
         IntStream.range(0, imgFlatArr.length).parallel().forEach(i -> {
             //System.out.printf("%d %d %d %d %f\n", i, i/imgSize, i/height, i%width, imgFlatArr[i]);
             arrMat.get(i/imgSize).put(
@@ -87,11 +86,10 @@ public class H5FloatObject extends H5Object{
         });
 
 
+
         //arrMat = initMatArray(imgFlatArr, arrMat, blockSize, height, width);
 
-        endTime = System.currentTimeMillis();
-
-        System.out.println("filling mat array: " + (endTime - startTime)/1000 + " s");
+        timer.endStage();
 
         return arrMat;
     }

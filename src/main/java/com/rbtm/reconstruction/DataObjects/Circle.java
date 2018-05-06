@@ -1,10 +1,10 @@
 package com.rbtm.reconstruction.DataObjects;
 
+import org.opencv.core.Point;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.awt.Point;
 
 @Setter
 @Getter

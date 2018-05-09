@@ -18,102 +18,85 @@ import java.util.stream.IntStream;
 public class H5FloatObject extends H5Object{
     private IHDF5FloatReader reader;
 
-    public H5FloatObject(String h5FilePath, String ObjectName, int numOfBlocks) throws DimensionMismatchException {
-        super(h5FilePath, ObjectName, numOfBlocks);
+    public H5FloatObject(String h5FilePath, String ObjectName, int numOfBlocks, int step) throws DimensionMismatchException {
+        super(h5FilePath, ObjectName, numOfBlocks, step);
         this.reader = abstractReader.float32();
     }
-    /*TODO: separate to block for better concourency
-    private static List<Mat> initMatArray(float[] imgFlatArr, ArrayList<Mat> arrMat, int blockSize, int height, int width) {
-        int coreNums = Constants.THREAD_NUM;
-        float max = ArrayUtils.getMax(imgFlatArr);
-        float min = ArrayUtils.getMin(imgFlatArr);
-        float diff = max-min;
-        int imgSize = height*width;
 
-        int standartBlockCapacity = blockSize/coreNums;
-        int lastBlockCapacity = blockSize/coreNums;
-
-        ArrayList<ArrayList<Mat>> threadArrMap = new ArrayList<>(coreNums);
-
-        IntStream.range(0, coreNums).forEach(i -> {
-            int blockCapacity = (i == coreNums - 1)?
-                    lastBlockCapacity:
-                    standartBlockCapacity;
-
-            ArrayList<Mat> tempArr = new ArrayList<>(blockCapacity);
-            threadArrMap.add(tempArr);
-        });
-
-
-        IntStream.range(0, coreNums).parallel().forEach(i -> {
-                    int blockCapacity = (i == coreNums - 1) ?
-                            lastBlockCapacity :
-                            standartBlockCapacity;
-                    IntStream.range(0, blockCapacity * imgSize).forEach(j ->
-                            threadArrMap.get(i).get(j / imgSize).put(
-                                    (j / height) % height, j % width, (imgFlatArr[i * standartBlockCapacity + j] - min) * 255 / (diff))
-                    );
-        });
-
-        IntStream.range(0, coreNums).forEach(i -> {
-            arrMat.addAll(threadArrMap.get(i));
-        });
-        return arrMat;
-
+    public H5FloatObject(String h5FilePath, String ObjectName, int numOfBlocks) throws DimensionMismatchException {
+        this(h5FilePath, ObjectName, numOfBlocks, 1);
     }
-    */
-    private static List<Mat> arrFloat2arrMat(float[] imgFlatArr, int height, int width) {
+
+    private List<Mat> arrFloat2arrMat(float[] imgFlatArr) {
         Timer timer = new Timer();
-        int blockSize = imgFlatArr.length/(height*width);
+
+        int imgSize = shape.getHeight()*shape.getWidth();
 
         timer.startStage("creating mat array");
         List<Mat> arrMat = new ArrayList<>(blockSize);
-        IntStream.range(0, blockSize).forEach(i -> arrMat.add(new Mat(height, width, Constants.DEFAULT_MAT_TYPE)));
+        IntStream.range(0, blockSize).forEach(i -> arrMat.add(new Mat(shape.getHeight(), shape.getWidth(), Constants.DEFAULT_MAT_TYPE)));
 
         timer.nextStage("filling mat array");
 
         float max = CustomArrayUtils.getMax(imgFlatArr);
         float min = CustomArrayUtils.getMin(imgFlatArr);
         float diff = max-min;
-        int imgSize = height*width;
 
 
-        IntStream.range(0, imgFlatArr.length).parallel().forEach(i -> {
-            //System.out.printf("%d %d %d %d %f\n", i, i/imgSize, i/height, i%width, imgFlatArr[i]);
-            arrMat.get(i/imgSize).put(
-                    (i/height)%height,i%width,(imgFlatArr[i] - min)*255/(diff));
-        });
+        if (step == 1) {
+            IntStream.range(0, imgFlatArr.length)
+                    .parallel()
+                    .forEach(i -> {
+                        arrMat.get(i/imgSize).put(
+                                (i/shape.getHeight())%shape.getHeight(),
+                                i%shape.getWidth(),
+                                (imgFlatArr[i] - min)*255/(diff));
+                    });
+        } else {
+            int[] indexArr = IntStream.range(0, imgFlatArr.length)
+                    .parallel()
+                    .filter(i ->
+                            i/(shape.getHeight()*step)%step==0 &&
+                            i%(shape.getWidth()*step)%step==0 &&
+                            i/(imgSize*step*step)%step == 0)
+                    .toArray();
 
-
-
-        //arrMat = initMatArray(imgFlatArr, arrMat, blockSize, height, width);
+            IntStream.range(0, imgSize*blockSize)
+                    .parallel()
+                    .forEach(i -> {
+                        arrMat.get(i/imgSize).put(
+                                (i/shape.getHeight())%shape.getHeight(),
+                                i%shape.getWidth(),
+                                (imgFlatArr[indexArr[i]] - min)*255/(diff));
+                    });
+        }
 
         timer.endStage();
 
         return arrMat;
     }
 
-    private MDFloatArray getMdArray(int i, int[] blockDimensions) {
+    private MDFloatArray getMdArray(int i) {
         long[] offsetArr = {i, 0, 0};
         return reader.readMDArrayBlockWithOffset(this.objectName, blockDimensions, offsetArr);
     }
 
-    private float[] getBlockArray(int i, int[] blockDimensions){
-        MDFloatArray mdArr = getMdArray(i, blockDimensions);
-        return CustomArrayUtils.resize(mdArr.getAsFlatArray(), step);
+    private float[] getBlockArray(int i){
+        MDFloatArray mdArr = getMdArray(i);
+        return mdArr.getAsFlatArray();
     }
 
     private float[] getNextBlock(){
-        return getBlockArray(currentBlock++*blockSize, blockDimensions);
+        return getBlockArray(currentBlock++*blockSize*step);
     }
 
     public List<Mat> getNextBlockMat(){
         float[] imgFlatArr = getNextBlock();
-        return arrFloat2arrMat(imgFlatArr, shape.getHeight(), shape.getWidth());
+        return arrFloat2arrMat(imgFlatArr);
     }
 
     public List<Mat>  getBlockMat(int i) {
-        float[] imgFlatArr = getBlockArray(i*blockSize, blockDimensions);
-        return arrFloat2arrMat(imgFlatArr, shape.getHeight(), shape.getWidth());
+        float[] imgFlatArr = getBlockArray(i*blockSize*step);
+        return arrFloat2arrMat(imgFlatArr);
     }
 }

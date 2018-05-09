@@ -37,9 +37,7 @@ public class CustomArrayUtils {
     }
 
     public static float[] resize(float[] arr, int step){
-        if (step ==1) {
-            return arr;
-        }
+        if (step ==1) { return arr; }
 
         for (int i=0, is=0; is < arr.length; ++i, is+=step){
             arr[i] = arr[is];

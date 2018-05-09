@@ -47,7 +47,7 @@ public class H5ToImgsConverter implements Converter {
         timer.startStage("init h5Object");
 
         H5FloatObject h5Obj =
-                new H5FloatObject(h5filePath, Constants.H5_OBJECT, Constants.NUM_OF_BLOCKS);
+                new H5FloatObject(h5filePath, Constants.H5_OBJECT, Constants.NUM_OF_BLOCKS, 2);
 
         DataShape shape = h5Obj.getShape();
         int blockSize = h5Obj.getBlockSize();

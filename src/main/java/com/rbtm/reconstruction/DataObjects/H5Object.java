@@ -2,6 +2,7 @@ package com.rbtm.reconstruction.DataObjects;
 
 import ch.systemsx.cisd.hdf5.*;
 import com.rbtm.reconstruction.Exceptions.DimensionMismatchException;
+import lombok.Data;
 import lombok.Getter;
 import org.opencv.core.Mat;
 
@@ -55,7 +56,7 @@ abstract class H5Object implements IMatDatasetObject {
 
         this.numOfBlocks = numOfBlocks;
         this.blockSize = shape.getNum()/numOfBlocks;
-        this.blockDimensions = new int[]{blockSize, shape.getHeight(), shape.getWidth()};
+        this.blockDimensions = new int[]{blockSize*step, shape.getHeight()*step, shape.getWidth()*step};
         this.currentBlock=0;
     }
 

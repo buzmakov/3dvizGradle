@@ -15,4 +15,13 @@ public class ImgProcessBlocks {
         );
         return block;
     }
+
+
+
+    public static List<Mat> ComplexProcessing(List<Mat> block) {
+
+
+
+        return block;
+    }
 }

@@ -1,6 +1,7 @@
-package com.rbtm.reconstruction.DataObjects;
+package com.rbtm.reconstruction.DataObjects.H5;
 
 import com.rbtm.reconstruction.Constants;
+import com.rbtm.reconstruction.DataObjects.H5.H5Object;
 import com.rbtm.reconstruction.Exceptions.DimensionMismatchException;
 
 
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 
-public class H5FloatObject extends H5Object{
+public class H5FloatObject extends H5Object {
     private IHDF5FloatReader reader;
 
     public H5FloatObject(String h5FilePath, String ObjectName, int numOfBlocks, int step) throws DimensionMismatchException {

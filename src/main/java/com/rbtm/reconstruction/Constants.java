@@ -3,10 +3,17 @@ package com.rbtm.reconstruction;
 import org.opencv.core.CvType;
 
 public final class Constants {
-    public static final String H5_OBJECT = "Results";
+
+    //get num of processors in system need for concurency
     public static final int THREAD_NUM = Runtime.getRuntime().availableProcessors();
+
+
     public static final double NANO_IN_SEC = 1000000000.0;
     public static final String PNG_FORMAT = "png";
-    public static final int NUM_OF_BLOCKS = 4;
+
+    //properties for h5 dataset object
+    public static final int RESIZE_STEP = 1;
+    public static final int NUM_OF_BLOCKS = 1;
     public static final int DEFAULT_MAT_TYPE = CvType.CV_32F;
+    public static final String H5_OBJECT = "Results";
 }

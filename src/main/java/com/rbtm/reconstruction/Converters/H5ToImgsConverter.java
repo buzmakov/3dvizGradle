@@ -2,7 +2,7 @@ package com.rbtm.reconstruction.Converters;
 
 import com.rbtm.reconstruction.Constants;
 import com.rbtm.reconstruction.DataObjects.DataShape;
-import com.rbtm.reconstruction.DataObjects.H5FloatObject;
+import com.rbtm.reconstruction.DataObjects.H5.H5FloatObject;
 
 import com.rbtm.reconstruction.Utils.Timer;
 import org.opencv.core.Core;
@@ -47,7 +47,7 @@ public class H5ToImgsConverter implements Converter {
         timer.startStage("init h5Object");
 
         H5FloatObject h5Obj =
-                new H5FloatObject(h5filePath, Constants.H5_OBJECT, Constants.NUM_OF_BLOCKS, 2);
+                new H5FloatObject(h5filePath, Constants.H5_OBJECT, Constants.NUM_OF_BLOCKS, Constants.RESIZE_STEP);
 
         DataShape shape = h5Obj.getShape();
         int blockSize = h5Obj.getBlockSize();

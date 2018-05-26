@@ -4,6 +4,8 @@ import com.rbtm.reconstruction.Constants;
 import com.rbtm.reconstruction.DataObjects.DataShape;
 import com.rbtm.reconstruction.DataObjects.H5.H5FloatObject;
 
+import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
+import com.rbtm.reconstruction.DataObjects.ImagesDataset.ImagesDataset;
 import com.rbtm.reconstruction.Utils.Timer;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -39,7 +41,7 @@ public class H5ToImgsConverter implements Converter {
     }
 
     @Override
-    public void convert() throws Exception {
+    public IMatDatasetObject convert() throws Exception {
         Timer timer = new Timer();
 
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -77,5 +79,7 @@ public class H5ToImgsConverter implements Converter {
 
             timer.endStage();
         }
+
+        return new ImagesDataset(outputDir, Constants.NUM_OF_BLOCKS);
     }
 }

@@ -21,6 +21,9 @@ public interface IMatDatasetObject {
 
     List<Mat>  getBlockMat(int i);
 
+    Mat getSlice(int i);
+
+
 /*TODO: for converting to different format
     void clearDataIfExists() throws IOException;
 

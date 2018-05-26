@@ -100,4 +100,10 @@ public class H5FloatObject extends H5Object {
         float[] imgFlatArr = getBlockArray(i*blockSize*step);
         return arrFloat2arrMat(imgFlatArr);
     }
+
+    public Mat getSlice(int i){
+        //TODO: add implementation
+        return null;
+    }
+
 }

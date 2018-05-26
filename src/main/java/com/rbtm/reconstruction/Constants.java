@@ -16,4 +16,7 @@ public final class Constants {
     public static final int NUM_OF_BLOCKS = 1;
     public static final int DEFAULT_MAT_TYPE = CvType.CV_32F;
     public static final String H5_OBJECT = "Results";
+
+    public static final String OBJ_PATH = "/home/alop0715/diplom/h5_samples";
+    public static final String TEMP_IMG_PATH = "/home/alop0715/diplom/tool_result";
 }

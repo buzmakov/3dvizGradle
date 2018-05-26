@@ -1,5 +1,7 @@
-package com.rbtm.reconstruction.DataObjects;
+package com.rbtm.reconstruction.DataObjects.ImagesDataset;
 
+import com.rbtm.reconstruction.DataObjects.DataShape;
+import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
 import lombok.Getter;
 import org.apache.commons.io.FileUtils;
 import org.opencv.core.Mat;
@@ -13,10 +15,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ImagesObject implements IMatDatasetObject{
+public class ImagesDataset implements IMatDatasetObject {
     @Getter File imgDir;
     @Getter List<File> imgFiles;
-    @Getter DataShape shape;
+    @Getter
+    DataShape shape;
     @Getter int numOfBlocks;
     @Getter int blockSize;
     @Getter int currentBlock;
@@ -37,7 +40,7 @@ public class ImagesObject implements IMatDatasetObject{
         this.currentBlock = 0;
     }
 
-    public ImagesObject(String imgDirPath, int numOfBlocks) throws IOException {
+    public ImagesDataset(String imgDirPath, int numOfBlocks) throws IOException {
         this.imgDir = new File(imgDirPath);
 
         if (!this.imgDir.exists()) {
@@ -70,6 +73,15 @@ public class ImagesObject implements IMatDatasetObject{
         });
 
         return arrMat;
+    }
+
+    public File getSliceAsFile(int i) {
+        return imgFiles.get(i);
+    }
+
+    @Override
+    public Mat getSlice(int i) {
+        return Imgcodecs.imread(imgFiles.get(i).getAbsolutePath());
     }
 /*
     @Override

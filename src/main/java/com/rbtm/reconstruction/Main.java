@@ -1,22 +1,71 @@
 package com.rbtm.reconstruction;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.rbtm.reconstruction.Converters.H5ToImgsConverter;
+import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
+
+import java.util.concurrent.atomic.AtomicReference;
+
+import static spark.Spark.*;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+        WebAppHealper wah = new WebAppHealper();
 
-        String inputDir = args[0];
-        String outputDir = args[1];
-        String h5file = args[2];
+        path("/objects", () -> {
+            get("/all", (req, res) ->
+                    wah.getObjList());
 
-        long startTime = System.currentTimeMillis();
+            get("/current", (req, res) ->
+                    wah.getCurrentObject());
 
-        H5ToImgsConverter c = new H5ToImgsConverter(inputDir, outputDir, h5file);
+            post("/current", (req, res) -> {
+                JsonElement root = new JsonParser().parse(req.body());
+                String newObjName = root.getAsJsonObject().get("objName").toString();
+                wah.setCurrentObject(newObjName);
+                return "Success";
+            });
 
-        c.convert();
+            post("/init", (req, res) -> {
+                if(wah.convert()) {
+                    return "Success";
+                } else {
+                    return "Fail";
+                }
+            });
 
-        long endTime = System.currentTimeMillis();
+            post("/forceInit", (req, res) -> {
+                if(wah.forceConvert()) {
+                    return "Success";
+                } else {
+                    return "Fail";
+                }
+            });
 
-        System.out.println("That took " + (endTime - startTime)/1000 + " s");
+            get("/current/shape", (req, res) -> {
+                if(!wah.isInit()) {
+                    return "Fail. Firstly please use */objects/init path";
+                }
+
+                return wah.getDatasetObj().getShape();
+            });
+        });
+
+
+        /*
+        path("/slice", () -> {
+            get("/:id", (req, res) -> {
+                if(datasetObject == null) {
+                    return "Fail. Firstly please use /objects/init path";
+                }
+
+                res.
+            });
+        });
+        */
+
+
+
     }
 }

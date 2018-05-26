@@ -7,6 +7,7 @@ import com.rbtm.reconstruction.DataObjects.H5.H5FloatObject;
 import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
 import com.rbtm.reconstruction.DataObjects.ImagesDataset.ImagesDataset;
 import com.rbtm.reconstruction.Utils.Timer;
+import org.apache.commons.io.FileUtils;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 
@@ -15,6 +16,8 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.opencv.imgcodecs.Imgcodecs;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -29,9 +32,17 @@ public class H5ToImgsConverter implements Converter {
     private String outputDir;
     private String h5filePath;
 
-    public H5ToImgsConverter(String inputDir, String outputDir, String h5FileName) {
+    public H5ToImgsConverter(String inputDir, String outputDir, String h5FileName) throws IOException {
         this.outputDir = outputDir;
         this.h5filePath = inputDir + "/" + h5FileName;
+
+        File outputDirFile = new File(outputDir);
+        if (!outputDirFile.exists()) {
+            outputDirFile.mkdir();
+        } else {
+            FileUtils.cleanDirectory(outputDirFile);
+
+        }
     }
 
     private String outputImgFormat(int i) {

@@ -33,7 +33,9 @@ public class ImagesDataset implements IMatDatasetObject {
     }
 
     private void updateInfo(File imgDir, int numOfBlocks) throws IOException {
-        this.imgFiles = Arrays.asList(imgDir.listFiles());
+        File [] imgs = imgDir.listFiles();
+        Arrays.sort(imgs);
+        this.imgFiles = Arrays.asList(imgs);
         this.shape = getDimension(imgFiles);
         this.numOfBlocks = numOfBlocks;
         this.blockSize = shape.getNum()/numOfBlocks;

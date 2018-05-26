@@ -2,6 +2,7 @@ package com.rbtm.reconstruction.DataObjects;
 
 import org.opencv.core.Mat;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public interface IMatDatasetObject {
     List<Mat>  getBlockMat(int i);
 
     Mat getSlice(int i);
+
+    File getSliceAsFile(int i);
 
 
 /*TODO: for converting to different format

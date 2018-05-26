@@ -11,6 +11,7 @@ import com.rbtm.reconstruction.Utils.CustomArrayUtils;
 import com.rbtm.reconstruction.Utils.Timer;
 import org.opencv.core.Mat;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -102,6 +103,11 @@ public class H5FloatObject extends H5Object {
     }
 
     public Mat getSlice(int i){
+        //TODO: add implementation
+        return null;
+    }
+
+    public File getSliceAsFile(int i) {
         //TODO: add implementation
         return null;
     }

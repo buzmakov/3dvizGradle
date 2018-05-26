@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-public class WebAppHealper {
+public class ObjectController {
     @Getter private List<String> objList;
     @Getter @Setter private String currentObject;
     @Getter private IMatDatasetObject datasetObj = null;
@@ -37,31 +37,42 @@ public class WebAppHealper {
         return result;
     }
 
-    WebAppHealper() {
+    ObjectController() {
         objList = parseObjList();
         currentObject = objList.get(0);
     }
 
 
     public boolean isInit(){
-        return datasetObj != null;
+        if (datasetObj != null) {
+            System.out.println("This object was init before. Skip converting");
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
-    private boolean objectIsConverting() {
+    private boolean objectIsConverted() {
         if(isInit()) {
-            System.out.println("This object was init before. Skip converting");
             return true;
         }
+
         File f = new File(Constants.TEMP_IMG_PATH, currentObject);
         if (f.exists() && f.isDirectory() && f.listFiles().length>0) {
             System.out.println("Converting resut is exist in cash. Skip converting");
+            return true;
         }
+
+        return false;
     }
 
     public boolean convert() throws Exception {
-        if(objectIsConverting()) {
-            datasetObj = new ImagesDataset(Constants.TEMP_IMG_PATH, Constants.NUM_OF_BLOCKS);
+        if(objectIsConverted()) {
+            datasetObj = new ImagesDataset(
+                    Constants.TEMP_IMG_PATH + "/" + currentObject,
+                    Constants.NUM_OF_BLOCKS);
+            System.out.println("Dataset has next shape: " + datasetObj.getShape());
             return true;
         }
 
@@ -69,12 +80,18 @@ public class WebAppHealper {
     }
 
     public boolean forceConvert() throws Exception {
+        System.out.println("Converting with next parameters: \n" +
+                "h5 store path: " + Constants.OBJ_PATH + "\n" +
+                "output path: " + Constants.TEMP_IMG_PATH + "/" + currentObject + " \n" +
+                "object name: " + currentObject);
+
         H5ToImgsConverter converter = new H5ToImgsConverter(
                 Constants.OBJ_PATH,
                 Constants.TEMP_IMG_PATH + "/" + currentObject,
                 currentObject + ".hdf5");
 
         datasetObj = converter.convert();
+        System.out.println("Finish converting");
         return true;
     }
 }

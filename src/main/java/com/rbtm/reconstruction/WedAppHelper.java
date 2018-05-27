@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-public class ObjectController {
+public class WedAppHelper {
     @Getter private List<String> objList;
     @Getter @Setter private String currentObject;
     @Getter private IMatDatasetObject datasetObj = null;
@@ -37,7 +37,7 @@ public class ObjectController {
         return result;
     }
 
-    ObjectController() {
+    WedAppHelper() {
         objList = parseObjList();
         currentObject = objList.get(0);
     }
@@ -54,13 +54,14 @@ public class ObjectController {
 
 
     private boolean objectIsConverted() {
+
         if(isInit()) {
             return true;
         }
 
         File f = new File(Constants.TEMP_IMG_PATH, currentObject);
         if (f.exists() && f.isDirectory() && f.listFiles().length>0) {
-            System.out.println("Converting resut is exist in cash. Skip converting");
+            System.out.println("Converting resut for " + currentObject + " is exist in cash. Skip converting");
             return true;
         }
 

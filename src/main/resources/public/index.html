@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>3dViz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+</head>
+<body>
+
+
+    <div class="columns is-1">
+        <div class="column is-half">
+            <div class="container is-fluid">
+                <div class="dropdown" id="objList-dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Objects list</span>
+                            <span class="icon is-small">
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content" id="objList-dropdown-content">
+                        </div>
+                    </div>
+                </div>
+                <a class="button viz-type">Slices</a>
+                <a class="button viz-type">Surfaces</a>
+            </div>
+        </div>
+        <div class="column">
+            <h2 class="title is-2" id="current-object-name">Current object</h2>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="columns is-1">
+        <div class="column is-two-thirds has-background-grey " id="viz-column">
+            <img id="viz-img" src="/objects/current/slice/1/">
+        </div>
+        <div class="column">
+            <input class="slider is-fullwidth" step="1" min="0" max="100" value="50" type="range">
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="scripts/index.js"></script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.rbtm.reconstruction;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.rbtm.reconstruction.Utils.Filters;
@@ -9,6 +10,7 @@ import com.rbtm.reconstruction.Utils.JsonUtil;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.OutputStream;
+import java.util.HashMap;
 
 import static spark.Spark.*;
 
@@ -26,28 +28,22 @@ public class Main {
 
 
         path("/objects/", () -> {
-            get("/all/", (req, res) ->
-                    JsonUtil.dataToJson(wah.getObjList()));
+            get("/all/", (req, res) ->  JsonUtil.dataToJson(wah.getObjList()));
 
             path("/current/", () -> {
 
-                get("", (req, res) ->
-                        wah.getCurrentObject());
+                get("", (req, res) ->  wah.getCurrentObject());
 
                 post("", (req, res) -> {
-                    JsonElement root = new JsonParser().parse(req.body());
-                    String newObjName = root.getAsJsonObject().get("objName").toString();
-                    wah.setCurrentObject(newObjName);
-                    System.out.println("new obj name is " + newObjName);
-                    return "Success";
-                });
+                    System.out.println("request body is: " + req.body());
 
-                post("/init/", (req, res) -> {
-                    if(wah.convert()) {
-                        return "Success";
-                    } else {
-                        return "Fail";
-                    }
+                    HashMap<String,Object> result =
+                            new ObjectMapper().readValue(req.body(), HashMap.class);
+                    String requestObj = result.get("objName").toString();
+                    System.out.println(requestObj);
+                    wah.setCurrentObject(requestObj);
+
+                    return "Success";
                 });
 
                 post("/forceInit/", (req, res) -> {
@@ -59,27 +55,27 @@ public class Main {
                 });
 
                 get("/shape/", (req, res) -> {
-                    if(!wah.isInit()) {
-                        return "Fail. Firstly please use */objects/init/ path";
+                    if(wah.isInit()) {
+                        return JsonUtil.dataToJson(wah.getDatasetObj().getShape());
                     }
 
-                    return wah.getDatasetObj().getShape();
+                    return "Fail";
                 });
 
                 path("/slice/", () -> {
                     get("/:id/", (req, res) -> {
-                        if(!wah.isInit()) {
-                            return "Fail. Firstly please use /objects/init/ path";
+                        if(wah.isInit()) {
+                            File imgFile = wah.getDatasetObj().getSliceAsFile(Integer.parseInt(req.params(":id")));
+
+                            res.raw().setContentType("image/"+ Constants.PNG_FORMAT);
+                            res.header("Access-Control-Allow-Origin", "*");
+                            try (OutputStream out = res.raw().getOutputStream()) {
+                                ImageIO.write(ImageIO.read(imgFile), Constants.PNG_FORMAT, out);
+                                return out;
+                            }
                         }
 
-                        File imgFile = wah.getDatasetObj().getSliceAsFile(Integer.parseInt(req.params(":id")));
-
-                        res.raw().setContentType("image/"+ Constants.PNG_FORMAT);
-                        res.header("Access-Control-Allow-Origin", "*");
-                        try (OutputStream out = res.raw().getOutputStream()) {
-                            ImageIO.write(ImageIO.read(imgFile), Constants.PNG_FORMAT, out);
-                            return out;
-                        }
+                        return "Fail";
                     });
                 });
 

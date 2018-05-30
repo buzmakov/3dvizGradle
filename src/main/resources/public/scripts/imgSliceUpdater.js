@@ -27,8 +27,10 @@ function generateFIlterBody() {
     var filterArr = []
     var imgFilterSliders = document.getElementsByClassName('filterSlider')
     for (var i = 0; i < imgFilterSliders.length; i++) {
-        var filterName = imgFilterSliders[i].id.split("-")[0]
-        filterArr.push({filterName : imgFilterSliders[i].value})
+        var key = imgFilterSliders[i].id.split("-")[0];
+        var obj = {};
+        obj[key] = imgFilterSliders[i].value;
+        filterArr.push(obj);
     }
 
     return filterArr
@@ -37,7 +39,7 @@ function generateFIlterBody() {
 
 function updateSlice(id) {
     var filters = generateFIlterBody()
-
+    var req = getXmlHttp()
     req.open("POST", host + "/objects/current/slice/filters/" + "?r=" + Math.random(), true);
     req.onreadystatechange = function() {
         if (req.readyState == 4) {
@@ -48,7 +50,7 @@ function updateSlice(id) {
         }
     };
 
-    req.send(null);
+    req.send(filters);
 
     var outputImg = document.getElementById('viz-img');
     outputImg.src = host + "/objects/current/slice/"+ id +"/?r=" + Math.random();

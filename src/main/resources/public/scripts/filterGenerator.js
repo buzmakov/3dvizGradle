@@ -27,19 +27,36 @@ function addFilter(filterName) {
     levelItem = document.createElement('div');
     levelItem.classList.toggle("level-item");
     levelItem.classList.toggle(id)
+
     var filterId = filterName + "-" + id
-    rootDiv.innerHTML += `
-        <div>
-            <input id="` + filterId + `" class="imgSlider filterSlider slider has-output-tooltip is-fullwidth" min="0" max="100" value="0" step="1" type="range">
-            <output for="sliderSlice">0</output>
-        </div>
-    `
+    var sliderItem = document.createElement('input')
+    sliderItem.className = "imgSlider filterSlider slider has-output-tooltip is-fullwidth"
+    sliderItem.id = filterId
+    sliderItem.min = 0
+    sliderItem.max = shapes['width']
+    sliderItem.step = 1
+    sliderItem.type = "range"
+    sliderItem.setAttribute("value", "0")
+    sliderItem.addEventListener("change", function(event) {
+        updateSlice(event.currentTarget.value)
+    });
+
+    var outputItem = document.createElement('output')
+    outputItem.setAttribute("for", filterId)
+    outputItem.innerText = 0
+
+    var childDiv = document.createElement('div')
+    childDiv.appendChild(sliderItem)
+    childDiv.appendChild(outputItem)
+    levelItem.appendChild(childDiv)
+    rootDiv.appendChild(levelItem)
+
 
 
     levelItem = document.createElement('div');
     levelItem.classList.toggle("level-item");
     levelItem.classList.toggle(id)
-    rootDiv.innerHTML += '<div><p id="medianMax">'+ shapes['h'] +'</p></div>'
+    rootDiv.innerHTML += '<div><p>'+ shapes['width'] +'</p></div>'
 
 
     var levelItem = document.createElement('div');

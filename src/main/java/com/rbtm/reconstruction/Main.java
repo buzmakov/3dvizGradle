@@ -64,6 +64,7 @@ public class Main {
 
                 path("/slice/", () -> {
                     post("/filters/", (req, res) -> {
+                        res.header("Access-Control-Allow-Origin", "*");
                         wah.setFiltersFromJson(req.body());
                         return "Success";
                     });

@@ -1,6 +1,7 @@
 function deleteFilter(id) {
     var elem = document.getElementById(id);
     elem.parentNode.removeChild(elem);
+    updateSlice(idSlice)
     return false;
 }
 
@@ -20,6 +21,7 @@ function addFilter(filterName) {
 
     levelItem = document.createElement('div')
     levelItem.classList.toggle("level-item")
+    levelItem.classList.toggle("has-text-centered")
     levelItem.classList.toggle(id)
     rootDiv.innerHTML += '<div><p>0</b></p></div>'
 
@@ -30,16 +32,19 @@ function addFilter(filterName) {
 
     var filterId = filterName + "-" + id
     var sliderItem = document.createElement('input')
-    sliderItem.className = "imgSlider filterSlider slider has-output-tooltip is-fullwidth"
+    sliderItem.className = "filterSlider slider has-output-tooltip is-fullwidth"
     sliderItem.id = filterId
     sliderItem.min = 0
     sliderItem.max = shapes['width']
     sliderItem.step = 1
     sliderItem.type = "range"
     sliderItem.setAttribute("value", "0")
+
+    /*AAAAAA!!!!
     sliderItem.addEventListener("change", function(event) {
         updateSlice(event.currentTarget.value)
-    });
+    }, false);
+    */
 
     var outputItem = document.createElement('output')
     outputItem.setAttribute("for", filterId)
@@ -52,9 +57,9 @@ function addFilter(filterName) {
     rootDiv.appendChild(levelItem)
 
 
-
     levelItem = document.createElement('div');
     levelItem.classList.toggle("level-item");
+    levelItem.classList.toggle("has-text-centered")
     levelItem.classList.toggle(id)
     rootDiv.innerHTML += '<div><p>'+ shapes['width'] +'</p></div>'
 
@@ -74,5 +79,13 @@ function addFilter(filterName) {
 
     var select = document.getElementById('optionsColumn');
     select.appendChild(rootDiv)
+
+
+    sliderItem = document.getElementById(filterId)
+        sliderItem.addEventListener("change", function(event) {
+                updateSlice(idSlice)
+            }, false);
+
+    updateSliderUi()
 
 }

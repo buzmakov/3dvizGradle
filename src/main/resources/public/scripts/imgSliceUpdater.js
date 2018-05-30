@@ -27,9 +27,9 @@ function generateFIlterBody() {
     var filterArr = []
     var imgFilterSliders = document.getElementsByClassName('filterSlider')
     for (var i = 0; i < imgFilterSliders.length; i++) {
-        var key = imgFilterSliders[i].id.split("-")[0];
         var obj = {};
-        obj[key] = imgFilterSliders[i].value;
+        obj["name"] = imgFilterSliders[i].id.split("-")[0];
+        obj["value"] = imgFilterSliders[i].value;
         filterArr.push(obj);
     }
 
@@ -50,7 +50,7 @@ function updateSlice(id) {
         }
     };
 
-    req.send(filters);
+    req.send(JSON.stringify(filters));
 
     var outputImg = document.getElementById('viz-img');
     outputImg.src = host + "/objects/current/slice/"+ id +"/?r=" + Math.random();

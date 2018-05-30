@@ -15,7 +15,7 @@ public class ImgProcessor {
         for (FilterEntity filter: filters) {
             switch (filter.getName()){
                 case "Median":
-                    Imgproc.medianBlur(img, img, filter.getValue());
+                    Imgproc.medianBlur(img, img, filter.getValue()*2 + 1);
                     break;
 
                 case "Gaussian":

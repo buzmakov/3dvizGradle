@@ -19,7 +19,8 @@ function init() {
     var imgSliders = document.getElementsByClassName('imgSlider')
     for (var i = 0; i < imgSliders.length; i++) {
         imgSliders[i].addEventListener('change', function(event) {
-            updateSlice(event.currentTarget.value)
+            idSlice = event.currentTarget.value
+            updateSlice(idSlice)
         }, false);
     }
 

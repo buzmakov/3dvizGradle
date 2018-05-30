@@ -63,9 +63,15 @@ public class Main {
                 });
 
                 path("/slice/", () -> {
+                    post("/filters/", (req, res) -> {
+                        wah.setFiltersFromJson(req.body());
+                        return "Success";
+                    });
+
+
                     get("/:id/", (req, res) -> {
                         if(wah.isInit()) {
-                            File imgFile = wah.getDatasetObj().getSliceAsFile(Integer.parseInt(req.params(":id")));
+                            File imgFile = wah.getSlice(Integer.parseInt(req.params(":id")), req.body());
 
                             res.raw().setContentType("image/"+ Constants.PNG_FORMAT);
                             res.header("Access-Control-Allow-Origin", "*");
@@ -78,6 +84,8 @@ public class Main {
                         return "Fail";
                     });
                 });
+
+
 
 
             });

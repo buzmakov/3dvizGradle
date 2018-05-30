@@ -22,4 +22,6 @@ public final class Constants {
 
     public static final String OBJ_PATH = "/home/alop0715/diplom/h5_samples";
     public static final String TEMP_IMG_PATH = "/home/alop0715/diplom/tool_result";
+    public static final String TEMP_DIR_PATH = "/home/alop0715/diplom/tmp";
+
 }

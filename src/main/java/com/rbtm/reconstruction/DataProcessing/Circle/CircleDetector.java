@@ -1,7 +1,6 @@
-package com.rbtm.reconstruction.DataProcessing;
+package com.rbtm.reconstruction.DataProcessing.Circle;
 
 import com.rbtm.reconstruction.Constants;
-import com.rbtm.reconstruction.DataObjects.Circle;
 import com.rbtm.reconstruction.DataObjects.DataShape;
 
 import com.rbtm.reconstruction.Utils.CustomArrayUtils;
@@ -23,15 +22,10 @@ public class CircleDetector {
     private Point center;
     private int radius;
     private List<Circle> circleArray;
-    private List<Float> diagram;
+    private List<CirleDiagramEntity> diagram;
 
-    public CircleDetector(Mat sourceImg, boolean isPreProcessed) {
-        if(isPreProcessed){
-            this.sourceImg = sourceImg;
-        } else {
-            //TODO: need to process source image
-            this.sourceImg = sourceImg;
-        }
+    public CircleDetector(Mat sourceImg) {
+        this.sourceImg = sourceImg;
         this.shape = new DataShape(1, sourceImg.rows(), sourceImg.cols());
         this.center = new Point(shape.getWidth()/2, shape.getHeight()/2);
         this.radius = CustomArrayUtils.getMin(new int[]{shape.getWidth() - (int)center.x, shape.getHeight() - (int)center.y});
@@ -43,7 +37,7 @@ public class CircleDetector {
                 this.shape.getWidth(),
                 Constants.DEFAULT_MAT_TYPE,
                 Scalar.all(0));
-        Imgproc.circle(circleImg,center,radius,Scalar.all(0), 2);
+        Imgproc.circle(circleImg,center,radius,Scalar.all(255), 2);
         return circleImg;
     }
 
@@ -62,16 +56,16 @@ public class CircleDetector {
     private void buildDiagram(){
         diagram = new ArrayList<>();
         for(int i = radius/10; i<radius; ++i) {
-            diagram.add(getRelativeSum(i));
+            diagram.add(new CirleDiagramEntity(i, getRelativeSum(i)));
         }
     }
 
-    private static boolean isCircle(int radius, List<Float> diagram) {
+    private static boolean isCircle(int radius, List<CirleDiagramEntity> diagram) {
         //TODO
         return true;
     }
 
-    public List<Float> getDiagram() {
+    public List<CirleDiagramEntity> getDiagram() {
         if(diagram == null) { buildDiagram();}
         return diagram;
     }
@@ -90,5 +84,4 @@ public class CircleDetector {
 
         return circleArray;
     }
-
 }

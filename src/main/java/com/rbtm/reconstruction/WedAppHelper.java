@@ -14,6 +14,8 @@ import com.google.gson.JsonElement;
 import com.rbtm.reconstruction.Converters.H5ToImgsConverter;
 import com.rbtm.reconstruction.DataObjects.FilterEntity;
 import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
+import com.rbtm.reconstruction.DataProcessing.Circle.CircleDetector;
+import com.rbtm.reconstruction.DataProcessing.Circle.CirleDiagramEntity;
 import com.rbtm.reconstruction.DataProcessing.ImgProcessor;
 import jdk.nashorn.internal.objects.annotations.Setter;
 import lombok.Getter;
@@ -29,6 +31,8 @@ public class WedAppHelper {
     @Getter private String currentObject;
     @Getter private IMatDatasetObject datasetObj = null;
     @Getter private List<FilterEntity> filters = new ArrayList<>();
+    @Getter private int currentId;
+    @Getter private Mat currentImg;
 
     private static List<String> parseObjList() {
         System.out.println("Objects store path: " + Constants.OBJ_PATH);
@@ -85,18 +89,26 @@ public class WedAppHelper {
         convert();
     }
 
-    public File getSlice(int id, String jsonFilters) throws IOException {
+    private Mat getProcessImg(int id) {
+        Mat img = datasetObj.getSlice(id);
+
         if (filters.isEmpty()) {
             System.out.println("Filters not found.");
-            return datasetObj.getSliceAsFile(id);
+            return img;
         }
 
-        Mat img = datasetObj.getSlice(id);
-        img = ImgProcessor.process(img, filters);
+        return ImgProcessor.process(img, filters);
+    }
 
+    public File getSlice(int id) {
+        Mat img = (id == currentId)? currentImg : getProcessImg(id);
         String buffImgPath = Constants.TEMP_DIR_PATH + "/bufferImg." + Constants.PNG_FORMAT;
         Imgcodecs.imwrite(buffImgPath, img);
         System.out.println("Buff img updated: " + buffImgPath);
+
+        currentId = id;
+        currentImg = img;
+
         return new File(buffImgPath);
     }
 
@@ -108,5 +120,12 @@ public class WedAppHelper {
         System.out.println("Parsed body: " + Arrays.toString(filterEntities));
 
         this.filters = new ArrayList<>(Arrays.asList(filterEntities));
+    }
+
+    public List<CirleDiagramEntity> getCircleDiagram(int id) {
+        Mat img = (id == currentId)? currentImg : getProcessImg(id);
+
+        CircleDetector cd = new CircleDetector(img);
+        return cd.getDiagram();
     }
 }

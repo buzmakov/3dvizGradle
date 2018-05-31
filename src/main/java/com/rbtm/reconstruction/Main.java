@@ -69,10 +69,16 @@ public class Main {
                         return "Success";
                     });
 
+                    get("/:id/circleDiagram/", (req, res) -> {
+                        res.header("Access-Control-Allow-Origin", "*");
+                        wah.getCircleDiagram(Integer.parseInt(req.params(":id")));
+                        return JsonUtil.dataToJson(wah.getDatasetObj().getShape());
+                    });
+
 
                     get("/:id/", (req, res) -> {
                         if(wah.isInit()) {
-                            File imgFile = wah.getSlice(Integer.parseInt(req.params(":id")), req.body());
+                            File imgFile = wah.getSlice(Integer.parseInt(req.params(":id")));
 
                             res.raw().setContentType("image/"+ Constants.PNG_FORMAT);
                             res.header("Access-Control-Allow-Origin", "*");

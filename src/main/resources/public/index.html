@@ -6,6 +6,8 @@
     <title>3dViz</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
 </head>
 <body>
 
@@ -46,9 +48,15 @@
 
 
         <div class="column is-two-thirds has-background-grey " id="viz-column">
-            <figure class="image is-square">
-                <img id="viz-img" src="https://bulma.io/images/placeholders/480x480.png">
+            <figure class="image is-1by1">
+                <img id="viz-img" src="https://bulma.io/images/placeholders/256x256.png">
             </figure>
+
+            <div id="toolTip" style="color:white">
+
+
+            </div>
+            <svg id="circle-chart" width="960" height="500"></svg>
         </div>
 
 
@@ -164,5 +172,6 @@
     <script src="scripts/filterGenerator.js"></script>
     <script src="scripts/index.js"></script>
     <script src="scripts/sliderUi.js"></script>
+    <script src="scripts/chartViz.js"></script>
 </body>
 </html>

@@ -48,36 +48,33 @@ function getSliderOutputPosition( slider ) {
 }
 
 function updateSliderUi() {
-    document.addEventListener( 'DOMContentLoaded', function () {
-      // Get all document sliders
-      var sliders = document.querySelectorAll( 'input[type="range"].slider' );
-      [].forEach.call( sliders, function ( slider ) {
-        var output = findOutputForSlider( slider );
-        if ( output ) {
-          if ( slider.classList.contains( 'has-output-tooltip' ) ) {
-            // Get new output position
-            var newPosition = getSliderOutputPosition( slider );
+    var sliders = document.querySelectorAll( 'input[type="range"].slider' );
+          [].forEach.call( sliders, function ( slider ) {
+            var output = findOutputForSlider( slider );
+            if ( output ) {
+              if ( slider.classList.contains( 'has-output-tooltip' ) ) {
+                // Get new output position
+                var newPosition = getSliderOutputPosition( slider );
 
-            // Set output position
-            output.style[ 'left' ] = newPosition.position;
-          }
+                // Set output position
+                output.style[ 'left' ] = newPosition.position;
+              }
 
-          // Add event listener to update output when slider value change
-          slider.addEventListener( 'input', function( event ) {
-            if ( event.target.classList.contains( 'has-output-tooltip' ) ) {
-              // Get new output position
-              var newPosition = getSliderOutputPosition( event.target );
+              // Add event listener to update output when slider value change
+              slider.addEventListener( 'input', function( event ) {
+                if ( event.target.classList.contains( 'has-output-tooltip' ) ) {
+                  // Get new output position
+                  var newPosition = getSliderOutputPosition( event.target );
 
-              // Set output position
-              output.style[ 'left' ] = newPosition.position;
+                  // Set output position
+                  output.style[ 'left' ] = newPosition.position;
+                }
+
+                // Update output with slider value
+                output.value = event.target.value;
+              } );
             }
-
-            // Update output with slider value
-            output.value = event.target.value;
           } );
-        }
-      } );
-    } );
 }
 
 updateSliderUi()

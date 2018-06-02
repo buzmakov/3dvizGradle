@@ -43,10 +43,9 @@ function vizCircleDiagramIfNeeded() {
     req.onreadystatechange = function() {
         if (req.readyState == 4) {
            if(req.status == 200 && req.responseURL.includes(idSlice)) {
-                vizCircleDiagram(JSON.parse(req.responseText))
-
-                document.getElementById("circle-chart").style.display = "block";
                 document.getElementById("chartloader").style.display = "none";
+                document.getElementById("circle-chart").style.display = "block";
+                vizCircleDiagram(JSON.parse(req.responseText))
            }
         }
     };

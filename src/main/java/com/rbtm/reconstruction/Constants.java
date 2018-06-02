@@ -24,4 +24,7 @@ public final class Constants {
     public static final String TEMP_IMG_PATH = "/home/alop0715/diplom/tool_result";
     public static final String TEMP_DIR_PATH = "/home/alop0715/diplom/tmp";
 
+    //some operations like
+    public static final int MAX_NUM_OF_REQUESTS = 4;
+
 }

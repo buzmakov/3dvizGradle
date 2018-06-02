@@ -1,8 +1,6 @@
 package com.rbtm.reconstruction;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import com.rbtm.reconstruction.Utils.Filters;
 import com.rbtm.reconstruction.Utils.JsonUtil;
 
@@ -11,10 +9,12 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static spark.Spark.*;
 
 public class Main {
+
     public static void main(String[] args) {
         // Configure Spark
         System.out.println("aaa");
@@ -22,6 +22,7 @@ public class Main {
         staticFiles.expireTime(600L);
 
         WedAppHelper wah = new WedAppHelper();
+        AtomicInteger numOfRunningReq = new AtomicInteger();
 
 
         //before("*", Filters.addTrailingSlashes);
@@ -76,13 +77,28 @@ public class Main {
 
                 path("/slice/", () -> {
                     post("/filters/", (req, res) -> {
+                        System.out.println(numOfRunningReq.get());
+
+                        while(numOfRunningReq.get() >= Constants.MAX_NUM_OF_REQUESTS){
+                            System.out.println("Too much requests. Sleep 1sec ...");
+                            Thread.sleep(1000);
+                        }
+                        numOfRunningReq.incrementAndGet();
                         res.header("Access-Control-Allow-Origin", "*");
+                        numOfRunningReq.decrementAndGet();
                         wah.setFiltersFromJson(req.body());
                         return res;
                     });
 
                     get("/:id/circleDiagram/", (req, res) -> {
+                        System.out.println(numOfRunningReq.get());
+                        while(numOfRunningReq.get() >= Constants.MAX_NUM_OF_REQUESTS){
+                            System.out.println("Too much requests. Sleep 1sec ...");
+                            Thread.sleep(1000);
+                        }
+                        numOfRunningReq.incrementAndGet();
                         res.header("Access-Control-Allow-Origin", "*");
+                        numOfRunningReq.decrementAndGet();
                         return JsonUtil.dataToJson(wah.getCircleDiagram(Integer.parseInt(req.params(":id"))));
                     });
 

@@ -4,6 +4,7 @@ import com.rbtm.reconstruction.Constants;
 import com.rbtm.reconstruction.DataObjects.DataShape;
 
 import com.rbtm.reconstruction.Utils.CustomArrayUtils;
+import com.rbtm.reconstruction.Utils.Timer;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
@@ -16,6 +17,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import  java.lang.Math;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 
 public class CircleDetector {
@@ -46,23 +49,18 @@ public class CircleDetector {
                 this.shape.getWidth(),
                 16,
                 Scalar.all(0));
-        Imgproc.circle(circleImg,center,radius,Scalar.all(255), 2);
+        Imgproc.circle(circleImg,center,radius,Scalar.all(255), 4);
 
         return circleImg;
     }
 
     private float calcSum(Mat img) {
         float[] pixelArray = new float[Math.toIntExact(img.total())];
-        float sum = 0;
-        double[] buffArr;
-        for(int i = 0; i< img.cols(); ++i) {
-            for(int j = 0; j< img.rows(); ++j) {
-                buffArr = img.get(i, j);
-                sum += (buffArr[0] + buffArr[1] + buffArr[2])/3;
-            }
-        }
+        //return (float) IntStream.range(0, (int)img.total()).
+        //        mapToDouble(i -> img.get(i/img.cols(), i%img.rows())[0]).sum()/255;
 
-        return sum/255;
+        return (float)Core.sumElems(img).val[0]/255;
+
     }
 
     private float getRelativeSum(int radius){
@@ -72,7 +70,7 @@ public class CircleDetector {
         //Imgcodecs.imwrite(buffImgPath, workImg);
 
         float sum = calcSum(workImg);
-        float circleLength = (float) (2*Math.PI*radius);
+        float circleLength = (float) (2*Math.PI*radius)*4;
 
         return sum/circleLength;
     }
@@ -90,10 +88,13 @@ public class CircleDetector {
     }
 
     public List<CirleDiagramEntity> getDiagram() {
+        Timer timer = new Timer();
+        timer.startStage("Calculate circle diagram");
         if(diagram == null) {
             System.out.println("Building circle diagram not found. Build new");
             buildDiagram();
         }
+        timer.endStage();
 
         return diagram;
     }

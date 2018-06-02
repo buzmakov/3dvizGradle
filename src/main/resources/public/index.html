@@ -6,8 +6,8 @@
     <title>3dViz</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/loading.css">
 </head>
 <body>
 
@@ -52,11 +52,10 @@
                 <img id="viz-img" src="https://bulma.io/images/placeholders/256x256.png">
             </figure>
 
-            <div id="toolTip" style="color:white">
-
-
+            <div id="chartVizArea" style="height: 300px; width: 100%;">
+                <div id="circle-chart" style="height: 100%; width: 100%; display: none"> </div>
+                <div id="chartloader"> </div>
             </div>
-            <svg id="circle-chart" width="960" height="500"></svg>
         </div>
 
 
@@ -114,7 +113,7 @@
 
             <div>
                 <label class="checkbox">
-                    <input type="checkbox">
+                    <input type="checkbox" id="circleDiagramViz">
                     Show circle
                 </label>
             </div>
@@ -154,6 +153,10 @@
                         <a href="#" class="dropdown-item filter-dropdown-item">
                             Closing
                         </a>
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item filter-dropdown-item">
+                            Threshold
+                        </a>
                     </div>
                 </div>
             </div>
@@ -167,11 +170,11 @@
 
     <script src="scripts/globalVars.js"></script>
     <script src="scripts/networkHelper.js"></script>
+    <script src="scripts/chartViz.js"></script>
     <script src="scripts/imgSliceUpdater.js"></script>
     <script src="scripts/objectListUploader.js"></script>
     <script src="scripts/filterGenerator.js"></script>
     <script src="scripts/index.js"></script>
     <script src="scripts/sliderUi.js"></script>
-    <script src="scripts/chartViz.js"></script>
 </body>
 </html>

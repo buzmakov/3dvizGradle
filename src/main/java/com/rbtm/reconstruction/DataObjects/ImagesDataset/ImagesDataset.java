@@ -1,5 +1,6 @@
 package com.rbtm.reconstruction.DataObjects.ImagesDataset;
 
+import com.rbtm.reconstruction.Constants;
 import com.rbtm.reconstruction.DataObjects.DataShape;
 import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
 import lombok.Getter;
@@ -83,6 +84,9 @@ public class ImagesDataset implements IMatDatasetObject {
 
     @Override
     public Mat getSlice(int i) {
+        //Mat m = Imgcodecs.imread(imgFiles.get(i).getAbsolutePath(), 0);
+        //m.convertTo(m, Constants.DEFAULT_MAT_TYPE);
+        //return m;
         return Imgcodecs.imread(imgFiles.get(i).getAbsolutePath());
     }
 /*

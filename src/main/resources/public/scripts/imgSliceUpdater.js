@@ -44,14 +44,13 @@ function updateSlice(id) {
     req.onreadystatechange = function() {
         if (req.readyState == 4) {
            if(req.status == 200) {
+
                 var outputImg = document.getElementById('viz-img');
                 outputImg.src = host + "/objects/current/slice/"+ id +"/?r=" + Math.random();
+                vizCircleDiagramIfNeeded()
         	 }
         }
     };
 
     req.send(JSON.stringify(filters));
-
-    var outputImg = document.getElementById('viz-img');
-    outputImg.src = host + "/objects/current/slice/"+ id +"/?r=" + Math.random();
 }

@@ -33,6 +33,7 @@ public class WedAppHelper {
     @Getter private List<FilterEntity> filters = new ArrayList<>();
     @Getter private int currentId;
     @Getter private Mat currentImg;
+    @Getter private CircleDetector currentDiagram;
 
     private static List<String> parseObjList() {
         System.out.println("Objects store path: " + Constants.OBJ_PATH);
@@ -106,8 +107,11 @@ public class WedAppHelper {
         Imgcodecs.imwrite(buffImgPath, img);
         System.out.println("Buff img updated: " + buffImgPath);
 
-        currentId = id;
-        currentImg = img;
+        if(id != currentId) {
+            currentId = id;
+            currentImg = img;
+            currentDiagram = null;
+        }
 
         return new File(buffImgPath);
     }
@@ -120,12 +124,18 @@ public class WedAppHelper {
         System.out.println("Parsed body: " + Arrays.toString(filterEntities));
 
         this.filters = new ArrayList<>(Arrays.asList(filterEntities));
+        this.currentId = -1;
+        this.currentDiagram = null;
     }
 
     public List<CirleDiagramEntity> getCircleDiagram(int id) {
+        if(currentDiagram != null) {
+            return currentDiagram.getDiagram();
+        }
         Mat img = (id == currentId)? currentImg : getProcessImg(id);
 
         CircleDetector cd = new CircleDetector(img);
-        return cd.getDiagram();
+        currentDiagram = cd;
+        return currentDiagram.getDiagram();
     }
 }

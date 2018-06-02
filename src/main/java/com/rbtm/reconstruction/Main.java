@@ -28,13 +28,21 @@ public class Main {
 
 
         path("/objects/", () -> {
-            get("/all/", (req, res) ->  JsonUtil.dataToJson(wah.getObjList()));
+            get("/all/", (req, res) -> {
+                res.header("Access-Control-Allow-Origin", "*");
+                return  JsonUtil.dataToJson(wah.getObjList());
+            });
 
             path("/current/", () -> {
 
-                get("", (req, res) ->  wah.getCurrentObject());
+                get("", (req, res) -> {
+                    res.header("Access-Control-Allow-Origin", "*");
+                    return wah.getCurrentObject();
+                });
 
                 post("", (req, res) -> {
+                    res.header("Access-Control-Allow-Origin", "*");
+
                     System.out.println("request body is: " + req.body());
 
                     HashMap<String,Object> result =
@@ -47,6 +55,8 @@ public class Main {
                 });
 
                 post("/forceInit/", (req, res) -> {
+                    res.header("Access-Control-Allow-Origin", "*");
+
                     if(wah.forceConvert()) {
                         return "Success";
                     } else {
@@ -55,6 +65,8 @@ public class Main {
                 });
 
                 get("/shape/", (req, res) -> {
+                    res.header("Access-Control-Allow-Origin", "*");
+
                     if(wah.isInit()) {
                         return JsonUtil.dataToJson(wah.getDatasetObj().getShape());
                     }
@@ -66,13 +78,12 @@ public class Main {
                     post("/filters/", (req, res) -> {
                         res.header("Access-Control-Allow-Origin", "*");
                         wah.setFiltersFromJson(req.body());
-                        return "Success";
+                        return res;
                     });
 
                     get("/:id/circleDiagram/", (req, res) -> {
                         res.header("Access-Control-Allow-Origin", "*");
-                        wah.getCircleDiagram(Integer.parseInt(req.params(":id")));
-                        return JsonUtil.dataToJson(wah.getDatasetObj().getShape());
+                        return JsonUtil.dataToJson(wah.getCircleDiagram(Integer.parseInt(req.params(":id"))));
                     });
 
 
@@ -99,6 +110,5 @@ public class Main {
         });
 
         after("*", Filters.addGzipHeader);
-        after("*", Filters.addAccessControlHeader);
     }
 }

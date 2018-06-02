@@ -79,6 +79,7 @@ function getButtonDiv(id) {
 }
 
 function getMax(filterName) {
+    if (filterName == "Threshold") return 255
     return Math.floor(shapes['width']/10)
 }
 

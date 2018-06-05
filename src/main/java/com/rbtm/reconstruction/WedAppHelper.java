@@ -11,6 +11,7 @@ import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.rbtm.reconstruction.Converters.DatasetToMarshConverter;
 import com.rbtm.reconstruction.Converters.H5ToImgsConverter;
 import com.rbtm.reconstruction.DataObjects.FilterEntity;
 import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
@@ -137,5 +138,10 @@ public class WedAppHelper {
         CircleDetector cd = new CircleDetector(img);
         currentDiagram = cd;
         return currentDiagram.getDiagram();
+    }
+
+    public void getObjFile() throws IOException {
+        DatasetToMarshConverter d2mConverter = new DatasetToMarshConverter(datasetObj, "", filters);
+        d2mConverter.convert();
     }
 }

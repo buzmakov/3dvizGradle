@@ -77,8 +77,6 @@ public class Main {
 
                 path("/slice/", () -> {
                     post("/filters/", (req, res) -> {
-                        System.out.println(numOfRunningReq.get());
-
                         while(numOfRunningReq.get() >= Constants.MAX_NUM_OF_REQUESTS){
                             System.out.println("Too much requests. Sleep 1sec ...");
                             Thread.sleep(1000);
@@ -91,7 +89,6 @@ public class Main {
                     });
 
                     get("/:id/circleDiagram/", (req, res) -> {
-                        System.out.println(numOfRunningReq.get());
                         while(numOfRunningReq.get() >= Constants.MAX_NUM_OF_REQUESTS){
                             System.out.println("Too much requests. Sleep 1sec ...");
                             Thread.sleep(1000);
@@ -120,7 +117,15 @@ public class Main {
                 });
 
 
+                get("/objFile/", (req, res) -> {
+                    res.header("Access-Control-Allow-Origin", "*");
 
+                    if(wah.isInit()) {
+                        return JsonUtil.dataToJson(wah.getDatasetObj().getShape());
+                    }
+
+                    return "Fail";
+                });
 
             });
         });

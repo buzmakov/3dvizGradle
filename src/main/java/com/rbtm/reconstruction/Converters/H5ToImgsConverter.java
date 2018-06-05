@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 /*
 Class for import h5 file to set of images
  */
-public class H5ToImgsConverter implements Converter {
+public class H5ToImgsConverter {
     private String outputDir;
     private String h5filePath;
     private String objName;
@@ -120,12 +120,10 @@ public class H5ToImgsConverter implements Converter {
         return new ImagesDataset(outputDir, Constants.NUM_OF_BLOCKS);
     }
 
-    @Override
     public IMatDatasetObject convert() throws Exception {
         return convertT(true);
     }
 
-    @Override
     public IMatDatasetObject forceConvert() throws Exception {
         return convertT(false);
     }

@@ -1,6 +1,7 @@
 package com.rbtm.reconstruction.DataProcessing;
 
 import com.rbtm.reconstruction.DataObjects.FilterEntity;
+import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
@@ -62,4 +63,45 @@ public class ImgProcessor {
 
         return img;
     }
+
+
+    public static List<Mat> processBlock(List<Mat> block, List<FilterEntity> filters) {
+        for (FilterEntity filter: filters) {
+            switch (filter.getName()){
+                case "Median":
+                    block = ImgprocBlocksWraper.blockMedian(block, filter.getValue()*2 + 1);
+                    break;
+
+                case "Gaussian":
+                    block = ImgprocBlocksWraper.blockGaussian(block, filter.getValue()*2 + 1);
+                    break;
+
+                case "Erosion":
+                    block = ImgprocBlocksWraper.blockErosion(block, filter.getValue()*2 + 1);
+                    break;
+
+                case "Dilatation":
+                    block = ImgprocBlocksWraper.blockDilatation(block, filter.getValue()*2 + 1);
+                    break;
+
+                case "Opening":
+                    block = ImgprocBlocksWraper.blockOpening(block, filter.getValue()*2 + 1);
+                    break;
+
+                case "Closing":
+                    block = ImgprocBlocksWraper.blockClosing(block, filter.getValue()*2 + 1);
+                    break;
+
+                case "Threshold":
+                    block = ImgprocBlocksWraper.blockThreshold(block, filter.getValue());
+                    break;
+                default:
+                    System.out.println("Filter " + filter.getName() + " not found in server.");
+                    break;
+            }
+        }
+
+        return block;
+    }
+
 }

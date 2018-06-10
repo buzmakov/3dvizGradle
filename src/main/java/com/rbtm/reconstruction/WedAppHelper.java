@@ -2,15 +2,11 @@ package com.rbtm.reconstruction;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.rbtm.reconstruction.Converters.DatasetToMarshConverter;
 import com.rbtm.reconstruction.Converters.H5ToImgsConverter;
 import com.rbtm.reconstruction.DataObjects.FilterEntity;
@@ -18,13 +14,9 @@ import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
 import com.rbtm.reconstruction.DataProcessing.Circle.CircleDetector;
 import com.rbtm.reconstruction.DataProcessing.Circle.CirleDiagramEntity;
 import com.rbtm.reconstruction.DataProcessing.ImgProcessor;
-import jdk.nashorn.internal.objects.annotations.Setter;
 import lombok.Getter;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.imgproc.Imgproc;
-
-import javax.imageio.ImageIO;
 
 
 public class WedAppHelper {
@@ -140,8 +132,9 @@ public class WedAppHelper {
         return currentDiagram.getDiagram();
     }
 
-    public void getObjFile() throws IOException {
-        DatasetToMarshConverter d2mConverter = new DatasetToMarshConverter(datasetObj, "", filters);
-        d2mConverter.convert();
+    public File getObjFile() throws IOException, InterruptedException {
+        DatasetToMarshConverter d2mConverter = new DatasetToMarshConverter(datasetObj, Constants.TEMP_DIR_PATH + "/buffObjFile.obj", filters);
+        return d2mConverter.convert(new float[]{3,3,3}, 100);
+
     }
 }

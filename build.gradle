@@ -17,10 +17,17 @@ repositories {
 
 dependencies {
     compile files("./libraries/sis-jhdf5-batteries_included.jar")
-    compile files('./libraries/opencv-340.jar')
+    compile files('/home/alop0715/tools/opencv-3.4.0/build/bin/opencv-340.jar')
+
 
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
     compile 'org.projectlombok:lombok:1.16.8'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    compile group: 'org.bytedeco', name: 'javacpp', version: '1.4.1'
+    compile "com.sparkjava:spark-core:2.7.2"
+    compile 'com.google.code.gson:gson:2.8.4'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
+    compile 'org.slf4j:slf4j-simple:1.7.21'
 }
 
 sourceCompatibility=1.8

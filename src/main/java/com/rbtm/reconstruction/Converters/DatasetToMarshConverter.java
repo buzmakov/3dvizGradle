@@ -4,52 +4,90 @@ import com.rbtm.reconstruction.Constants;
 import com.rbtm.reconstruction.DataObjects.FilterEntity;
 import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
 import com.rbtm.reconstruction.DataProcessing.ImgProcessor;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
+import com.rbtm.reconstruction.MarchingCubes.MarchingCubes;
+import com.rbtm.reconstruction.Utils.Timer;
 import org.opencv.core.Mat;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 
-@AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class DatasetToMarshConverter {
     private IMatDatasetObject sourceDataset;
-    private String outputFilePath;
+    private File outputFile;
     List<FilterEntity> filters;
+    Timer timer;
+    File dumpFile;
 
-    private void dump(List<Mat> block, BufferedWriter buffWriter) throws IOException {
-        for (Mat m: block) {
-            for (int i = 0; i<m.rows(); ++i) {
-                for(int j = 0; j<m.cols(); ++i) {
-                    buffWriter.write(m.get(i,j)[0]+" ");
-                }
-            }
-        }
-    }
+    public DatasetToMarshConverter(IMatDatasetObject sourceDataset, String outputFilePath, List<FilterEntity> filters) throws IOException {
+        this.sourceDataset = sourceDataset;
+        this.filters = filters;
+        this.outputFile = new File(outputFilePath);
+        this.timer = new Timer();
+        this.dumpFile = new File(Constants.TEMP_DIR_PATH, "arrayDump.txt");
 
-    private void filterAndDump(File dumpFile) throws IOException {
+        outputFile.delete();
         dumpFile.delete();
-        List<Mat> block;
-
-        BufferedWriter outputWriter = new BufferedWriter(new FileWriter(dumpFile));
-        while(sourceDataset.hasNextBlock()) {
-            block = sourceDataset.getNextBlockMat();
-            block = ImgProcessor.processBlock(block, filters);
-            dump(block, outputWriter);
-        }
-
-        outputWriter.flush();
-        outputWriter.close();
+        dumpFile.createNewFile();
     }
 
-    public void convert() throws IOException {
-        File outPutFile = new File(outputFilePath);
-        File arrayDumpFile = new File(Constants.TEMP_DIR_PATH, "arrayDump.txt");
-        outPutFile.delete();
-        filterAndDump(arrayDumpFile);
+
+    private void outputToFile(List<float[]> results) {
+        try {
+            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(dumpFile));
+
+            int idx = 0;
+            for(int i = 0; i < results.size(); i++) {
+                if (idx % 3 == 0) {
+                    stream.write(("f " + (idx + 1) + " " + (idx + 2) + " " + (idx + 3) + "\n").getBytes());
+                }
+                idx ++;
+                stream.write(("v " + results.get(i)[0] + " " + results.get(i)[1] + " " + results.get(i)[2] + "\n").getBytes());
+            }
+
+            stream.flush();
+            stream.close();
+        }
+        catch (Exception e) {
+            System.out.println("Something went wrong while writing to the output file");
+            e.printStackTrace();
+            return;
+        }
+    }
+
+
+    public File convert(final float voxSize[], final float isoValue) throws InterruptedException {
+        List<float []> results = new ArrayList<>();
+
+
+        timer.startStage("Executing marching cubes.");
+
+        ExecutorService executor = Executors.newFixedThreadPool(Constants.THREAD_NUM);
+        TreeMap<Integer, List<float []>> mResults = new TreeMap<>();
+        for(int i=0; i<sourceDataset.getNumOfBlocks(); i++) {
+            int finalI = i;
+            executor.submit( () -> {
+                List<Mat> block = sourceDataset.getBlockMat(finalI);
+                block = ImgProcessor.processBlock(block, filters);
+                mResults.put(finalI, MarchingCubes.marchingCubesMat(block, voxSize, isoValue, 1));
+            });
+        }
+
+        executor.shutdown();
+        executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+
+
+        timer.nextStage("PROGRESS: Writing results to output file.");
+        for(int i = 0; i< mResults.size(); ++i) {
+            results.addAll(mResults.get(i));
+        }
+        outputToFile(results);
+        timer.endStage();
+        return outputFile;
     }
 }

@@ -89,25 +89,4 @@ public class ImagesDataset implements IMatDatasetObject {
         //return m;
         return Imgcodecs.imread(imgFiles.get(i).getAbsolutePath());
     }
-/*
-    @Override
-    public void clearDataIfExists() throws IOException {
-        if (imgFiles.size() == 0) {
-            return;
-        }
-
-        FileUtils.cleanDirectory(imgDir);
-        updateInfo(imgDir, numOfBlocks);
-    }
-
-    @Override
-    public boolean addBlock(List<Mat> block) {
-        return false;
-    }
-
-    @Override
-    public boolean safeToFileSystem() {
-        return false;
-    }
-    */
 }

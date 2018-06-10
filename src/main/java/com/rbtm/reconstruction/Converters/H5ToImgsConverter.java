@@ -105,7 +105,6 @@ public class H5ToImgsConverter {
             for (int mi = 0; mi < matArr.size(); ++mi) {
                 int finalMi = mi;
                 executor.submit( () -> {
-                    //Imgproc.threshold(matArr.get(mi), matArr.get(mi), 127, 255, Imgproc.THRESH_BINARY);
                     Imgcodecs.imwrite(outputImgFormat(blockI * blockSize + finalMi), matArr.get(finalMi));
                 });
             }

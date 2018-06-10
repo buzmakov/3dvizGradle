@@ -3,6 +3,7 @@ package com.rbtm.reconstruction;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rbtm.reconstruction.Utils.Filters;
 import com.rbtm.reconstruction.Utils.JsonUtil;
+import org.apache.commons.io.FileUtils;
 
 
 import javax.imageio.ImageIO;
@@ -121,10 +122,16 @@ public class Main {
                     res.header("Access-Control-Allow-Origin", "*");
 
                     if(wah.isInit()) {
-                        return JsonUtil.dataToJson(wah.getDatasetObj().getShape());
+                        File objFile = wah.getObjFile();
+
+                        res.raw().setContentType("text/plain");
+                        res.header("Access-Control-Allow-Origin", "*");
+                        String out = FileUtils.readFileToString(objFile);
+
                     }
 
                     return "Fail";
+
                 });
 
             });

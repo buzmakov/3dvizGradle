@@ -1,6 +1,7 @@
 package com.rbtm.reconstruction.Utils;
 
 import static java.lang.System.currentTimeMillis;
+import static java.lang.System.setOut;
 
 public class Timer {
     private long startStageTime;
@@ -12,6 +13,7 @@ public class Timer {
     }
 
     public void startStage(String stage){
+        System.out.println("START STAGE: " + stage);
         startStageTime = currentTimeMillis();
         currentStage = stage;
     }
@@ -19,7 +21,7 @@ public class Timer {
     public void endStage() {
         long endTime = currentTimeMillis();
         if(currentStage != "") {
-            System.out.println("STAGE "+ currentStage + ": " + (endTime - startStageTime)/1000 + " s");
+            System.out.println("STAGE FINISHED: "+ currentStage + ": " + (endTime - startStageTime)/1000 + " s");
         }
         startStageTime = endTime;
     }

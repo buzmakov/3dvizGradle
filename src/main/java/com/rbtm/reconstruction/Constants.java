@@ -15,10 +15,9 @@ public final class Constants {
 
     //properties for h5 dataset object
     public static final int RESIZE_STEP = 1;
-    public static final int NUM_OF_BLOCKS = 1;
+    public static final int NUM_OF_BLOCKS = 4;
     public static final int DEFAULT_MAT_TYPE = CvType.CV_32F;
     public static final String H5_OBJECT = "Results";
-    public static final String H5_OBJECT_2 = "Result";
 
     public static final String OBJ_PATH = "/home/alop0715/diplom/h5_samples";
     public static final String TEMP_IMG_PATH = "/home/alop0715/diplom/tool_result";
@@ -26,5 +25,6 @@ public final class Constants {
 
     //some operations like
     public static final int MAX_NUM_OF_REQUESTS = 4;
+
 
 }

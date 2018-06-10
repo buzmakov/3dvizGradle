@@ -8,7 +8,6 @@ public class ExtractHandler {
     public static void extractHandlerFloat(File inputFile, File outFile, final int[] size, final float voxSize[], final float isoValue, final int nThreads) {
         float[] scalarField;
 
-        if (inputFile != null) {
             System.out.println("PROGRESS: Reading input data.");
             try {
                 int idx = 0;
@@ -38,11 +37,7 @@ public class ExtractHandler {
                 System.out.println("Something went wrong while reading the volume");
                 return;
             }
-        }
-        else {
-            System.out.println("PROGRESS: Generating volume data.");
-            scalarField = VolumeGenerator.generateScalarFieldFloat(size);
-        }
+
 
         final float[] finalScalarField = scalarField;
 

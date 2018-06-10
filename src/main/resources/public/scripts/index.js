@@ -11,6 +11,17 @@ function changeVizType(type) {
             vizAreas[i].style.display = "none";
         }
     }
+
+    var vizArea = type + "Opts"
+    var vizAreas = document.getElementsByClassName('vizOptions')
+    for (var i = 0; i < vizAreas.length; i++) {
+        if(vizAreas[i].id == vizArea) {
+            vizAreas[i].style.display = "block";
+            currVizType = type
+        } else {
+            vizAreas[i].style.display = "none";
+        }
+    }
 }
 
 function changeActiveBotton(obj) {

@@ -100,7 +100,6 @@ public class Main {
                         return JsonUtil.dataToJson(wah.getCircleDiagram(Integer.parseInt(req.params(":id"))));
                     });
 
-
                     get("/:id/", (req, res) -> {
                         if(wah.isInit()) {
                             File imgFile = wah.getSlice(Integer.parseInt(req.params(":id")));
@@ -127,7 +126,7 @@ public class Main {
                         res.raw().setContentType("text/plain");
                         res.header("Access-Control-Allow-Origin", "*");
                         String out = FileUtils.readFileToString(objFile);
-
+                        return out;
                     }
 
                     return "Fail";

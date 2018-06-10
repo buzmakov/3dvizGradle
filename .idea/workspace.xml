@@ -1,42 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32b3d1b9-8bec-4b4f-aeca-79365b825a98" name="Default" comment="update">
-      <change beforePath="" afterPath="$PROJECT_DIR$/debug.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/libraries/opencv-340.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/scripts/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_11.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/3dviz.iml" afterPath="$PROJECT_DIR$/.idea/modules/3dviz.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/3dviz_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/3dviz_main.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/3dviz_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/3dviz_test.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="32b3d1b9-8bec-4b4f-aeca-79365b825a98" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/public/3party-scripts/Three.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/public/scripts/OBJLoader.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/public/scripts/threeJsManipulations.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" afterPath="$PROJECT_DIR$/Dockerfile" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/rbtm/reconstruction/DataPrepare.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/libs/3dviz-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/build/libs/3dviz-1.0-SNAPSHOT.jar" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/META-INF/MANIFEST.MF" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" afterPath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Constants.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Converters/DatasetToMarshConverter.java" afterPath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Converters/DatasetToMarshConverter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Converters/H5ToImgsConverter.java" afterPath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Converters/H5ToImgsConverter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/DataObjects/ImagesDataset/ImagesDataset.java" afterPath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/DataObjects/ImagesDataset/ImagesDataset.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/MarchingCubes/CallbackMC.java" afterPath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/MarchingCubes/CallbackMC.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/MarchingCubes/ExtractHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/MarchingCubes/ExtractHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/MarchingCubes/MarchingCubes.java" afterPath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/MarchingCubes/MarchingCubes.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/MarchingCubes/VolumeGenerator.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Utils/Timer.java" afterPath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Utils/Timer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Utils/Utils.java" afterPath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Utils/Utils.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/WedAppHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/WedAppHelper.java" />
-      <change beforePath="$PROJECT_DIR$/test.sh" afterPath="$PROJECT_DIR$/test.sh" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/index.html" afterPath="$PROJECT_DIR$/src/main/resources/public/index.html" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/scripts/index.js" afterPath="$PROJECT_DIR$/src/main/resources/public/scripts/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -72,37 +45,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MarchingCubes.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/MarchingCubes/MarchingCubes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#marchingCubesFloat#0;class#MarchingCubes#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DatasetToMarshConverter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Converters/DatasetToMarshConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="84" column="13" lean-forward="false" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
+            <state relative-caret-position="0">
+              <caret line="78" column="9" lean-forward="false" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Constants.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -110,8 +60,31 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="907">
-              <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+            <state relative-caret-position="415">
+              <caret line="67" column="50" lean-forward="false" selection-start-line="67" selection-start-column="40" selection-end-line="67" selection-end-column="50" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-515">
+              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="threeJsManipulations.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/threeJsManipulations.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="583">
+              <caret line="128" column="13" lean-forward="false" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -120,27 +93,9 @@
       <file leaf-file-name="objectListUploader.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/objectListUploader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
+            <state relative-caret-position="216">
               <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="27" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImgprocBlocksWraper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/DataProcessing/ImgprocBlocksWraper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="32" />
-              <folding>
-                <element signature="method#blockMedian#0;class#ImgprocBlocksWraper#0" expanded="false" />
-                <element signature="method#blockGaussian#0;class#ImgprocBlocksWraper#0" expanded="false" />
-                <element signature="method#blockErosion#0;class#ImgprocBlocksWraper#0" expanded="false" />
-                <element signature="method#blockDilatation#0;class#ImgprocBlocksWraper#0" expanded="false" />
-                <element signature="method#blockOpening#0;class#ImgprocBlocksWraper#0" expanded="false" />
-                <element signature="method#blockClosing#0;class#ImgprocBlocksWraper#0" expanded="false" />
-                <element signature="method#blockThreshold#0;class#ImgprocBlocksWraper#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -148,8 +103,8 @@
       <file leaf-file-name="WedAppHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/WedAppHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3">
-              <caret line="96" column="33" lean-forward="true" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="33" />
+            <state relative-caret-position="918">
+              <caret line="136" column="10" lean-forward="false" selection-start-line="136" selection-start-column="10" selection-end-line="136" selection-end-column="10" />
               <folding>
                 <element signature="method#parseObjList#0;class#WedAppHelper#0" expanded="false" />
                 <element signature="method#WedAppHelper#0;class#WedAppHelper#0" expanded="false" />
@@ -165,39 +120,52 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+            <state relative-caret-position="648">
+              <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+              <folding>
+                <element signature="e#838#994#0" expanded="false" />
+                <element signature="e#1061#1213#0" expanded="false" />
+                <element signature="e#1242#1775#0" expanded="false" />
+                <element signature="e#1815#2094#0" expanded="false" />
+                <element signature="e#2129#2412#0" expanded="false" />
+                <element signature="e#2494#3063#0" expanded="false" />
+                <element signature="e#3114#3698#0" expanded="false" />
+                <element signature="e#3735#4392#0" expanded="false" />
+                <element signature="e#4450#4954#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Three.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/public/3party-scripts/Three.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="6" column="67" lean-forward="false" selection-start-line="6" selection-start-column="67" selection-end-line="6" selection-end-column="67" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Main.java">
+      <file leaf-file-name="OBJLoader.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/OBJLoader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-              <folding>
-                <element signature="e#1061#1213#0" expanded="false" />
-                <element signature="e#1242#1775#0" expanded="false" />
-                <element signature="e#1815#2094#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="511">
+              <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="H5ToImgsConverter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Converters/H5ToImgsConverter.java">
+      <file leaf-file-name="sliderUi.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/sliderUi.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="117" column="48" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
-              <folding>
-                <element signature="method#outputImgFormat#0;class#H5ToImgsConverter#0" expanded="false" />
-                <element signature="method#printInfo#0;class#H5ToImgsConverter#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="1368">
+              <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -554,9 +522,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/frontend/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/WebAppHeandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/DataObjects/ImagesDataSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/DataObjects/ImagesDataset/ImagesDataSet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/DataObjects/DataShape.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/WebAppHealper.java" />
@@ -587,8 +552,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/DataProcessing/Circle/CircleDetector.java" />
         <option value="$PROJECT_DIR$/src/main/resources/public/scripts/chartViz.js" />
         <option value="$PROJECT_DIR$/src/main/resources/public/scripts/globalVars.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/public/index.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/public/scripts/index.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/DataProcessing/ImgBlocksProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/DataProcessing/ImgProcessBlocksWraper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/DataProcessing/ImgprocBlocksWraper.java" />
@@ -602,9 +565,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/MarchingCubes/MarchingCubes.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Constants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/WedAppHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Converters/DatasetToMarshConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/WedAppHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/public/scripts/objLoader.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/public/scripts/OBJLoader.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/public/scripts/threeJsManipulations.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/public/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/public/scripts/index.js" />
       </list>
     </option>
   </component>
@@ -636,10 +604,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -704,6 +672,15 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="3party-scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="3dviz" type="b2602c69:ProjectViewProjectNode" />
+              <item name="3dvizGradle" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -713,7 +690,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -723,6 +700,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/public/scripts" />
+      <recent name="$PROJECT_DIR$/src/main/resources/public/3party-scripts" />
       <recent name="$PROJECT_DIR$/src/main/Resources/public" />
       <recent name="$PROJECT_DIR$/src/main/Resources" />
     </key>
@@ -732,6 +711,8 @@
       <recent name="com.rbtm.reconstruction.POJOs" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/public/3party-scripts" />
+      <recent name="$PROJECT_DIR$/src/main/resources/public/scripts" />
       <recent name="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Utils" />
       <recent name="$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/MarchingCubes" />
     </key>
@@ -1025,11 +1006,18 @@
       <option name="project" value="LOCAL" />
       <updated>1528211277305</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="update">
+      <created>1528643649634</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1528643649634</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1366" height="741" extended-state="6" />
+    <frame x="65" y="88" width="1366" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1045,8 +1033,6 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22108346" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0122887865" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1057,11 +1043,16 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0122887865" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1088,29 +1079,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Utils/RequestUtil.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Index/IndexController.java" />
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sparkjava/spark-core/2.7.2/d73bdc786a4b84b5bd2a26206c17c84277e3ccce/spark-core-2.7.2-sources.jar!/spark/Spark.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9414">
-          <caret line="63" column="106" lean-forward="false" selection-start-line="63" selection-start-column="95" selection-end-line="63" selection-end-column="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libraries/opencv-3.4.0/platforms/maven/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-338">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/resources/main/public/scripts/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-270">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/debug.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1143,7 +1111,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1176,13 +1143,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/sliderUi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
-          <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/filterGenerator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -1211,21 +1171,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="47" column="66" lean-forward="true" selection-start-line="47" selection-start-column="66" selection-end-line="47" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/DataObjects/H5/H5Object.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="50" column="4" lean-forward="false" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
-          <folding>
-            <element signature="method#getType#0;class#H5Object#0" expanded="false" />
-            <element signature="method#getDimension#0;class#H5Object#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1233,7 +1182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1241,7 +1189,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1264,9 +1211,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1282,7 +1226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
           <caret line="18" column="38" lean-forward="false" selection-start-line="18" selection-start-column="15" selection-end-line="19" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1290,7 +1233,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1312,7 +1254,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
           <caret line="67" column="28" lean-forward="false" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1320,7 +1261,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1329,10 +1269,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
           <caret line="68" column="36" lean-forward="false" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="36" />
-          <folding>
-            <element signature="e#2315#2475#0" expanded="false" />
-            <element signature="e#2474#2475#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1340,10 +1276,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-          <folding>
-            <element signature="e#318#319#0" expanded="false" />
-            <element signature="e#354#355#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1351,9 +1283,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1361,7 +1290,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1369,10 +1297,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
           <caret line="73" column="53" lean-forward="false" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="53" />
-          <folding>
-            <element signature="method#getDimension#0;class#ImagesDataset#0" expanded="false" />
-            <element signature="method#getNextBlockMat#0;class#ImagesDataset#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1380,15 +1304,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="11" column="32" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="32" />
-          <folding>
-            <element signature="method#blockMedian#0;class#ImgprocBlocksWraper#0" expanded="false" />
-            <element signature="method#blockGaussian#0;class#ImgprocBlocksWraper#0" expanded="false" />
-            <element signature="method#blockErosion#0;class#ImgprocBlocksWraper#0" expanded="false" />
-            <element signature="method#blockDilatation#0;class#ImgprocBlocksWraper#0" expanded="false" />
-            <element signature="method#blockOpening#0;class#ImgprocBlocksWraper#0" expanded="false" />
-            <element signature="method#blockClosing#0;class#ImgprocBlocksWraper#0" expanded="false" />
-            <element signature="method#blockThreshold#0;class#ImgprocBlocksWraper#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1396,26 +1311,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#marchingCubesFloat#0;class#MarchingCubes#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="907">
-          <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/objectListUploader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1429,7 +1324,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Converters/H5ToImgsConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
+        <state relative-caret-position="1548">
           <caret line="117" column="48" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
           <folding>
             <element signature="method#outputImgFormat#0;class#H5ToImgsConverter#0" expanded="false" />
@@ -1440,26 +1335,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
+        <state relative-caret-position="432">
           <caret line="24" column="32" lean-forward="false" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Converters/DatasetToMarshConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="84" column="13" lean-forward="false" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/WedAppHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="96" column="33" lean-forward="true" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="33" />
+        <state relative-caret-position="918">
+          <caret line="136" column="10" lean-forward="false" selection-start-line="136" selection-start-column="10" selection-end-line="136" selection-end-column="10" />
           <folding>
             <element signature="method#parseObjList#0;class#WedAppHelper#0" expanded="false" />
             <element signature="method#WedAppHelper#0;class#WedAppHelper#0" expanded="false" />
@@ -1474,15 +1359,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/objectListUploader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/sliderUi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1368">
+          <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="129" column="0" lean-forward="true" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+        <state relative-caret-position="648">
+          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
           <folding>
+            <element signature="e#838#994#0" expanded="false" />
             <element signature="e#1061#1213#0" expanded="false" />
             <element signature="e#1242#1775#0" expanded="false" />
             <element signature="e#1815#2094#0" expanded="false" />
+            <element signature="e#2129#2412#0" expanded="false" />
+            <element signature="e#2494#3063#0" expanded="false" />
+            <element signature="e#3114#3698#0" expanded="false" />
+            <element signature="e#3735#4392#0" expanded="false" />
+            <element signature="e#4450#4954#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rbtm/reconstruction/Converters/DatasetToMarshConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="78" column="9" lean-forward="false" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/3party-scripts/Three.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="67" lean-forward="false" selection-start-line="6" selection-start-column="67" selection-end-line="6" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/3party-scripts/objLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/OBJLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/OBJLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/threeJsManipulations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="128" column="13" lean-forward="false" selection-start-line="128" selection-start-column="13" selection-end-line="128" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="67" column="50" lean-forward="false" selection-start-line="67" selection-start-column="40" selection-end-line="67" selection-end-column="50" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/public/scripts/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-515">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

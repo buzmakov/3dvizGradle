@@ -65,115 +65,122 @@
 
 
         <div class="column" id="optionsColumn">
-
-            <div class="level" id="SliceLevel">
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p><b>Slice:</b></p>
+            <div id="SlicesOpts" class="vizOptions">
+                <div class="level" id="SliceLevel">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p><b>Slice:</b></p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p id="sliceMin">0</p>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div>
+                            <input id="sliderSlice" class="imgSlider slider has-output-tooltip is-fullwidth " min="0" max="100" value="0" step="1" type="range">
+                            <output for="sliderSlice">0</output>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p id="sliceMax">100</p>
+                        </div>
                     </div>
                 </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p id="sliceMin">0</p>
+
+
+                <div class="level" id="resizeLevel">
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p><b>Resize:</b></p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p id="resizeMin">0</p>
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <div>
+                            <input id="resizeSlider" class="imgSlider slider has-output-tooltip is-fullwidth " min="0" max="10" value="0" step="1" type="range">
+                            <output for="resizeSlider">0</output>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p id="resizeMax">10</p>
+                        </div>
                     </div>
                 </div>
-                <div class="level-item">
-                    <div>
-                        <input id="sliderSlice" class="imgSlider slider has-output-tooltip is-fullwidth " min="0" max="100" value="0" step="1" type="range">
-                        <output for="sliderSlice">0</output>
-                    </div>
+
+                <div>
+                    <label class="checkbox">
+                        <input type="checkbox" id="circleDiagramViz">
+                        Show circle
+                    </label>
                 </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p id="sliceMax">100</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="level" id="resizeLevel">
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p><b>Resize:</b></p>
-                    </div>
-                </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p id="resizeMin">0</p>
-                    </div>
-                </div>
-                <div class="level-item">
-                    <div>
-                        <input id="resizeSlider" class="imgSlider slider has-output-tooltip is-fullwidth " min="0" max="10" value="0" step="1" type="range">
-                        <output for="resizeSlider">0</output>
-                    </div>
-                </div>
-                <div class="level-item has-text-centered">
-                    <div>
-                        <p id="resizeMax">10</p>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <label class="checkbox">
-                    <input type="checkbox" id="circleDiagramViz">
-                    Show circle
-                </label>
-            </div>
 
 
 
 
 
 
-            <div class="dropdown">
-                <div class="dropdown-trigger">
-                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                        <span>Add filter</span>
-                        <span class="icon is-small">
+                <div class="dropdown">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                            <span>Add filter</span>
+                            <span class="icon is-small">
         <i class="fas fa-angle-down" aria-hidden="true"></i>
       </span>
-                    </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu" role="menu" is-hoverable>
-                    <div class="dropdown-content">
-                        <a class="dropdown-item filter-dropdown-item">
-                            Median
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a class="dropdown-item filter-dropdown-item">
-                            Erosion
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a class="dropdown-item filter-dropdown-item">
-                            Dilatation
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a class="dropdown-item filter-dropdown-item">
-                            Opening
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item filter-dropdown-item">
-                            Closing
-                        </a>
-                        <hr class="dropdown-divider">
-                        <a href="#" class="dropdown-item filter-dropdown-item">
-                            Threshold
-                        </a>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu" is-hoverable>
+                        <div class="dropdown-content">
+                            <a class="dropdown-item filter-dropdown-item">
+                                Median
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item filter-dropdown-item">
+                                Erosion
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item filter-dropdown-item">
+                                Dilatation
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item filter-dropdown-item">
+                                Opening
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item filter-dropdown-item">
+                                Closing
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item filter-dropdown-item">
+                                Threshold
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div></div>
+
+            <div id="SurfacesOpts" class="vizOptions"></div>
         </div>
+
     </div>
 
 
 
 
 
+    <script src="3party-scripts/Three.js"></script>
 
     <script src="scripts/globalVars.js"></script>
     <script src="scripts/networkHelper.js"></script>
+
+    <script src="scripts/OBJLoader.js"></script>
     <script src="scripts/chartViz.js"></script>
     <script src="scripts/imgSliceUpdater.js"></script>
     <script src="scripts/objectListUploader.js"></script>

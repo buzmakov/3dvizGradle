@@ -29,7 +29,7 @@ public class DatasetToMarshConverter {
         this.filters = filters;
         this.outputFile = new File(outputFilePath);
         this.timer = new Timer();
-        this.dumpFile = new File(Constants.TEMP_DIR_PATH, "arrayDump.txt");
+        this.dumpFile = new File(Constants.TEMP_DIR_PATH, "arrayDump.obj");
 
         outputFile.delete();
         dumpFile.delete();
@@ -43,11 +43,12 @@ public class DatasetToMarshConverter {
 
             int idx = 0;
             for(int i = 0; i < results.size(); i++) {
-                if (idx % 3 == 0) {
-                    stream.write(("f " + (idx + 1) + " " + (idx + 2) + " " + (idx + 3) + "\n").getBytes());
-                }
-                idx ++;
                 stream.write(("v " + results.get(i)[0] + " " + results.get(i)[1] + " " + results.get(i)[2] + "\n").getBytes());
+                if ((idx+1)% 3 == 0) {
+                    stream.write(("f " + (idx + 1) + " " + (idx + 2) + " " + (idx + 3) + "\n").getBytes());
+                }                stream.write(("v " + results.get(i)[0] + " " + results.get(i)[1] + " " + results.get(i)[2] + "\n").getBytes());
+
+                idx ++;
             }
 
             stream.flush();
@@ -88,6 +89,6 @@ public class DatasetToMarshConverter {
         }
         outputToFile(results);
         timer.endStage();
-        return outputFile;
+        return dumpFile;
     }
 }

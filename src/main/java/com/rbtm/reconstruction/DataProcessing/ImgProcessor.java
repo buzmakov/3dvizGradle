@@ -55,6 +55,11 @@ public class ImgProcessor {
                 case "Threshold":
                     Imgproc.threshold(img, img, filter.getValue(), 255, Imgproc.THRESH_BINARY);
                     break;
+
+                case "Resize":
+                    Imgproc.resize(img, img, new Size(img.cols()/filter.getValue(), img.rows()/filter.getValue()));
+                    break;
+
                 default:
                     System.out.println("Filter " + filter.getName() + " not found in server.");
                     break;
@@ -94,6 +99,9 @@ public class ImgProcessor {
 
                 case "Threshold":
                     block = ImgprocBlocksWraper.blockThreshold(block, filter.getValue());
+                    break;
+                case "Resize":
+                    block = ImgprocBlocksWraper.blockResize(block, filter.getValue());
                     break;
                 default:
                     System.out.println("Filter " + filter.getName() + " not found in server.");

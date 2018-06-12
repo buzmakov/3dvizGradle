@@ -77,4 +77,12 @@ public class ImgprocBlocksWraper {
         );
         return block;
     }
+
+    public static List<Mat> blockResize(List<Mat> block, int val) {
+        block.stream().parallel().forEach(i -> {
+            Imgproc.resize(i, i, new Size(i.cols()/val, i.rows()/val));
+                }
+        );
+        return block;
+    }
 }

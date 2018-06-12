@@ -29,6 +29,7 @@
                         </div>
                     </div>
                 </div>
+                <a class="button viz-type">Welcome</a>
                 <a class="button viz-type">Slices</a>
                 <a class="button viz-type">Surfaces</a>
             </div>
@@ -48,10 +49,10 @@
 
 
         <div class="column is-two-thirds has-background-grey " id="viz-column">
-            <div id="SlicesViz" class="vizArea">
-                <figure class="image is-1by1">
-                    <img id="viz-img" src="https://bulma.io/images/placeholders/256x256.png">
-                </figure>
+            <div id="WelcomeViz"> </div>
+
+            <div id="SlicesViz" class="vizArea" style="display: none;">
+                <img id="viz-img" src="https://bulma.io/images/placeholders/256x256.png">
 
                 <div id="chartVizArea" style="height: 300px; width: 100%;">
                     <div id="circle-chart" style="height: 100%; width: 100%; display: none"> </div>
@@ -62,10 +63,12 @@
             <div id="SurfacesViz" class="vizArea" style="display: none;"></div>
         </div>
 
-
-
         <div class="column" id="optionsColumn">
-            <div id="SlicesOpts" class="vizOptions">
+            <h2 class="subtitle">Controls</h2>
+
+            <div id="WelcomeOpts" class="vizOptions"></div>
+
+            <div id="SlicesOpts" class="vizOptions" style="display: none;">
                 <div class="level" id="SliceLevel">
                     <div class="level-item has-text-centered">
                         <div>
@@ -104,7 +107,7 @@
                     </div>
                     <div class="level-item">
                         <div>
-                            <input id="resizeSlider" class="imgSlider slider has-output-tooltip is-fullwidth " min="0" max="10" value="0" step="1" type="range">
+                            <input id="Resize" class="imgSlider slider has-output-tooltip is-fullwidth filterSlider" min="1" max="10" value="0" step="1" type="range">
                             <output for="resizeSlider">0</output>
                         </div>
                     </div>
@@ -164,10 +167,72 @@
                         </div>
                     </div>
                 </div>
-            </div></div>
+            </div>
 
-            <div id="SurfacesOpts" class="vizOptions"></div>
+            <div id="SurfacesOpts" class="vizOptions" style="display: none;">
+                <div id='controls'>
+
+
+                    <table class="table" >
+                        <tr>
+                            <td>
+                                <a class="button" id='startRendering' onclick='initScene();'>Start rendering</a>
+                            </td>
+                            <td>
+                                <a class="button" id='stopRendering' onclick='destroyScene();'>Stop rendering</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a class="button" id='in' onclick='zoomIn();'>Zoom In</a>
+                            </td>
+                            <td>
+                                <a class="button" id='out' onclick='zoomOut();'>Zoom Out</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a class="button" id='rOn' onclick='rotateOn();'>Rotate On</a>
+                            </td>
+                            <td>
+                                <a class="button" oid='rOff' onclick='rotateOff();'>Rotate Off</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a class="button" id='wOn' onclick='wireframeOn();'>Wireframe On</a>
+                            </td>
+                            <td>
+                                <a class="button" id='wOff' onclick='wireframeOff();'>Wireframe Off</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a class="button" id='front' onclick='front();'>Front</a>
+                            </td>
+                            <td>
+                                <a class="button" id='back' onclick='back();'>Back</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <a class="button" id='left' onclick='left();'>Left</a>
+                            </td>
+                            <td>
+                                <a class="button" id='right' onclick='right();'>Right</a>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
         </div>
+
 
     </div>
 
@@ -176,11 +241,14 @@
 
 
     <script src="3party-scripts/Three.js"></script>
+    <script src="3party-scripts/OBJLoader.js"></script>
+    <script src="3party-scripts/OrbitControl.js"></script>
+
 
     <script src="scripts/globalVars.js"></script>
     <script src="scripts/networkHelper.js"></script>
 
-    <script src="scripts/OBJLoader.js"></script>
+    <script src="scripts/threeJsManipulations.js"></script>
     <script src="scripts/chartViz.js"></script>
     <script src="scripts/imgSliceUpdater.js"></script>
     <script src="scripts/objectListUploader.js"></script>

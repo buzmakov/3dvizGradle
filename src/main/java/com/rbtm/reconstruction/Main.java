@@ -118,19 +118,13 @@ public class Main {
 
 
                 get("/objFile/", (req, res) -> {
+                    File objFile = wah.getObjFile();
+
+                    res.raw().setContentType("text/plain");
                     res.header("Access-Control-Allow-Origin", "*");
-
-                    if(wah.isInit()) {
-                        File objFile = wah.getObjFile();
-
-                        res.raw().setContentType("text/plain");
-                        res.header("Access-Control-Allow-Origin", "*");
-                        String out = FileUtils.readFileToString(objFile);
-                        return out;
-                    }
-
-                    return "Fail";
-
+                    String out = FileUtils.readFileToString(objFile);
+                    return out;
+                    
                 });
 
             });

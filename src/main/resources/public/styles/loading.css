@@ -16,3 +16,27 @@
     100% { transform: rotate(360deg); }
 }
 
+
+
+#container{
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#controls{
+  width: 400px;
+  height: 700px;
+  float: left;
+  clear:none;
+}
+
+#obj{
+    background-color: #606060;
+    color: #fff;
+    width: 400px;
+    height: 700px;
+    float: left;
+    clear: none;
+}

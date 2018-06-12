@@ -133,10 +133,10 @@ public class WedAppHelper {
     }
 
     public File getObjFile() throws IOException, InterruptedException {
-        //DatasetToMarshConverter d2mConverter = new DatasetToMarshConverter(datasetObj, Constants.TEMP_DIR_PATH + "/buffObjFile.obj", filters);
-        //return d2mConverter.convert(new float[]{3,3,3}, 100);
+        DatasetToMarshConverter d2mConverter = new DatasetToMarshConverter(datasetObj, Constants.TEMP_DIR_PATH + "/buffObjFile.obj", filters);
+        return d2mConverter.convert(new float[]{3,3,3}, 100);
 
-        return  new File(Constants.TEMP_DIR_PATH + "/arrayDump.obj");
+        //return  new File(Constants.TEMP_DIR_PATH + "/arrayDump.obj");
 
     }
 }

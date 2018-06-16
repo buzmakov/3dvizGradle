@@ -29,7 +29,6 @@ public class MarchingCubes {
 
         // Volume iteration
         for (int z = 0; z < zDim - cubeSize; z+=cubeSize) {
-            System.out.println(z);
             for (int y = 0; y < yDim - cubeSize; y+=cubeSize) {
                 for (int x = 0; x < xDim - cubeSize; x+=cubeSize) {
 

@@ -83,6 +83,10 @@ public class ImgprocBlocksWraper {
             Imgproc.resize(i, i, new Size(i.cols()/val, i.rows()/val));
                 }
         );
+
+        for (int i=0; i< block.size(); i+=val) {
+            block.remove(i);
+        }
         return block;
     }
 }

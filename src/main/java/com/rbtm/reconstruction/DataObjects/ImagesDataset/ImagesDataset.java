@@ -5,6 +5,7 @@ import com.rbtm.reconstruction.DataObjects.DataShape;
 import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
 import lombok.Getter;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.comparator.NameFileComparator;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 
@@ -35,7 +36,7 @@ public class ImagesDataset implements IMatDatasetObject {
 
     private void updateInfo(File imgDir, int numOfBlocks) throws IOException {
         File [] imgs = imgDir.listFiles();
-        Arrays.sort(imgs);
+        Arrays.sort(imgs, NameFileComparator.NAME_COMPARATOR);
         this.imgFiles = Arrays.asList(imgs);
         this.shape = getDimension(imgFiles);
         this.numOfBlocks = numOfBlocks;

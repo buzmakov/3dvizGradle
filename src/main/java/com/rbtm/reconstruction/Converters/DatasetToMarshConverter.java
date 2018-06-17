@@ -45,9 +45,8 @@ public class DatasetToMarshConverter {
             for(int i = 0; i < results.size(); i++) {
                 stream.write(("v " + results.get(i)[0] + " " + results.get(i)[1] + " " + results.get(i)[2] + "\n").getBytes());
                 if ((idx+1)% 3 == 0) {
-                    stream.write(("f " + (idx + 1) + " " + (idx + 2) + " " + (idx + 3) + "\n").getBytes());
-                }                stream.write(("v " + results.get(i)[0] + " " + results.get(i)[1] + " " + results.get(i)[2] + "\n").getBytes());
-
+                    stream.write(("f " + (idx - 1 ) + " " + (idx) + " " + (idx + 1 ) + "\n").getBytes());
+                }
                 idx ++;
             }
 

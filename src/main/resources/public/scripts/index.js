@@ -37,6 +37,7 @@ function changeActiveBotton(obj) {
 }
 
 function init() {
+    destroyScene()
     var x = document.getElementsByClassName("dropdown");
     for (var i = 0; i < x.length; i++) {
         x[i].addEventListener('click', function(event) {

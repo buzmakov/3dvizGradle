@@ -10,6 +10,7 @@ var height = 700;
 var windowHalfX = width / 2;
 var windowHalfY = height / 2;
 
+
 function createScene() {
     scene = new THREE.Scene();
 
@@ -46,12 +47,15 @@ function destroyScene() {
 }
 
 function initScene() {
+    destroyScene()
     container = document.getElementById('SurfacesViz');
     width = container.clientWidth
 
 
     camera = new THREE.PerspectiveCamera( 45, width / height, 1, 2000 );
-    camera.position.z = 250;
+    camera.position.z = 50;
+    camera.position.x = 50;
+    camera.lookAt(0,0,0)
     controls = new THREE.OrbitControls( camera );
 
     createScene()
@@ -72,10 +76,11 @@ function initScene() {
 
     var loader = new THREE.OBJLoader( manager );
     loader.load( host + "/objects/current/objFile/" + "?r=" + Math.random(), function ( object ) {
-    //loader.load( "./scripts/cow-nonormals.obj", function ( object ) {
     	console.log(object);
 
-    	object.position.y = - 95;
+    	object.position.x = 0;
+    	object.position.y = 0;
+    	object.position.z = 0;
         scene.add( object );
     }, onProgress, onError );
 
@@ -118,25 +123,6 @@ function render() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-function addCamera(x, y, z){
-    camera = new THREE.PerspectiveCamera( 17, width / height, 1, 4000 );
-    camera.position.x = x;
-    camera.position.y = y;
-    camera.position.z = z;
-    scene.add( camera );
-}
 
 function zoomIn(){
   camera.fov -= 1;

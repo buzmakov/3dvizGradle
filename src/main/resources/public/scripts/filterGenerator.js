@@ -98,7 +98,7 @@ function addFilter(filterName) {
     rootDiv.appendChild(getButtonDiv(id))
 
 
-    var select = document.getElementById('optionsColumn');
+    var select = document.getElementById('SlicesOpts');
     select.appendChild(rootDiv)
 
 

@@ -1,7 +1,9 @@
 package com.rbtm.reconstruction.DataProcessing;
 
+import com.rbtm.reconstruction.Constants;
 import com.rbtm.reconstruction.DataObjects.FilterEntity;
 import com.rbtm.reconstruction.DataObjects.IMatDatasetObject;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
@@ -59,7 +61,21 @@ public class ImgProcessor {
                 case "Resize":
                     Imgproc.resize(img, img, new Size(img.cols()/filter.getValue(), img.rows()/filter.getValue()));
                     break;
-
+                case "And":
+                    Core.bitwise_and(img, img, img);
+                    break;
+                case "Or":
+                    Core.bitwise_or(img, img, img);
+                    break;
+                case "Xor":
+                    Core.bitwise_xor(img, img, img);
+                    break;
+                case "Not":
+                    Core.bitwise_xor(img, img, img);
+                    break;
+                case "Convert":
+                    img.convertTo(img, Constants.DEFAULT_MAT_TYPE);
+                    break;
                 default:
                     System.out.println("Filter " + filter.getName() + " not found in server.");
                     break;

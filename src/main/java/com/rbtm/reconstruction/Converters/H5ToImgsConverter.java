@@ -105,7 +105,9 @@ public class H5ToImgsConverter {
             for (int mi = 0; mi < matArr.size(); ++mi) {
                 int finalMi = mi;
                 executor.submit( () -> {
-                    Imgcodecs.imwrite(outputImgFormat(blockI * blockSize + finalMi), matArr.get(finalMi));
+                    Mat buff = matArr.get(finalMi);
+                    Core.bitwise_and(buff, buff, buff);
+                    Imgcodecs.imwrite(outputImgFormat(blockI * blockSize + finalMi), buff);
                 });
             }
 

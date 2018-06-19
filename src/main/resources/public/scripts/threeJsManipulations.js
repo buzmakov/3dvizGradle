@@ -95,7 +95,6 @@ function initScene() {
 
     container.appendChild( renderer.domElement );
 
-    window.addEventListener( 'resize', onWindowResize, false );
     animate()
 }
 

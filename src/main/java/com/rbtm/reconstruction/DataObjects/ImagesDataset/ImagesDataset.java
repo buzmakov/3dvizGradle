@@ -88,6 +88,6 @@ public class ImagesDataset implements IMatDatasetObject {
         //Mat m = Imgcodecs.imread(imgFiles.get(i).getAbsolutePath(), 0);
         //m.convertTo(m, Constants.DEFAULT_MAT_TYPE);
         //return m;
-        return Imgcodecs.imread(imgFiles.get(i).getAbsolutePath());
+        return Imgcodecs.imread(imgFiles.get(i).getAbsolutePath(),0 );
     }
 }

@@ -85,12 +85,10 @@ public class WedAppHelper {
 
     private Mat getProcessImg(int id) {
         Mat img = datasetObj.getSlice(id);
-
         if (filters.isEmpty()) {
             System.out.println("Filters not found.");
             return img;
         }
-
         return ImgProcessor.process(img, filters);
     }
 

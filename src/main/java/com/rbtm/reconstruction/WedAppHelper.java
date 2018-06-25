@@ -48,7 +48,7 @@ public class WedAppHelper {
 
     WedAppHelper() {
         objList = parseObjList();
-        currentObject = objList.get(0);
+        currentObject = "";
     }
 
     private H5ToImgsConverter initConverter() throws IOException {

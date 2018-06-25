@@ -1,9 +1,21 @@
-# Общее описание
-
 # Backend
-За основу бэкенда была взята библиотека [Spark](http://sparkjava.com/)
-
-Реализованый REST API:
+За основу REST-сервиса была взята библиотека [Spark](http://sparkjava.com/).
+Процессинг изображений реализован с помощью opencv 3.4 ([opencv javadoc](https://docs.opencv.org/3.4/javadoc/index.html))
+Работа с файлами формата hdf5 использовалась библиотека jhdf5 ([javadoc](http://svnsis.ethz.ch/doc/openbis/S177.0/index.html?overview-summary.html))
+## Описание основных пакетов и классов
+* com.rbtm.reconstruction:Constants - все константы, включая различные пути
+* com.rbtm.reconstruction.Utils - различные полезные классы
+* com.rbtm.reconstruction.Utils:Timer удобно использовать, если нужно засечь время на определенном участке
+* com.rbtm.reconstruction:Main - описание всех рест запросов
+* com.rbtm.reconstruction:WebAppHealper - вспомгательный класс для обработки рест запросов
+* com.rbtm.reconstruction.Converters - собраны конвертеры датасетов между форматами. Реализованы
+    * hdf5 файл -> набор png изображений
+    * hdf5 файл -> набор Mat
+    * набор png изображений -> obj файл
+* com.rbtm.reconstruction.DataProcessing - классы по обработке изображений
+* com.rbtm.reconstruction.DataProcessing.Circle - классы для построения диаграммы по интегрированию колец
+* com.rbtm.reconstruction.MarchingCubes - Классы по алгоритму марширующих кубов
+## REST API:
 * **GET /objects/all/**
     * **Описание:** Возращает список всех объектов доступных для исследования
     * **Тело запроса:** -

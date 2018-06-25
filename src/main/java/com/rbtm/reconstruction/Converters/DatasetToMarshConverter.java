@@ -16,7 +16,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-
+/*
+Класс по конвертации IMatDatasetObject в obj файл
+ */
 public class DatasetToMarshConverter {
     private IMatDatasetObject sourceDataset;
     private File outputFile;

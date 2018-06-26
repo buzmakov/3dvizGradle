@@ -28,6 +28,7 @@ public class CircleDetector {
     private int radius;
     private List<Circle> circleArray;
     private List<CirleDiagramEntity> diagram;
+    private float thresh = (float) 0.75;
 
     private void printInitInfo() {
         System.out.println("center: " + center + ", radius: " + radius + ", datashape: " + shape);
@@ -59,7 +60,7 @@ public class CircleDetector {
         //return (float) IntStream.range(0, (int)img.total()).
         //        mapToDouble(i -> img.get(i/img.cols(), i%img.rows())[0]).sum()/255;
 
-        return (float)Core.sumElems(img).val[0]/255;
+        return (float)(Core.sumElems(img).val[0]/255/1.2);
 
     }
 
@@ -82,9 +83,8 @@ public class CircleDetector {
         }
     }
 
-    private static boolean isCircle(int radius, List<CirleDiagramEntity> diagram) {
-        //TODO
-        return true;
+    private boolean isCircle(int radius, List<CirleDiagramEntity> diagram) {
+        return diagram.get(radius).getValue() > this.thresh;
     }
 
     public List<CirleDiagramEntity> getDiagram() {

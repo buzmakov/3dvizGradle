@@ -71,7 +71,9 @@ public class H5ToImgsConverter {
 
         Timer timer = new Timer();
 
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        nu.pattern.OpenCV.loadShared();
+
 
         timer.startStage("init h5Object");
 

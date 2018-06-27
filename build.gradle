@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     compile files("./libraries/sis-jhdf5-batteries_included.jar")
-    compile files('/home/alop0715/tools/opencv-3.4.0/build/bin/opencv-340.jar')
+    //compile files('/home/alop0715/tools/opencv-3.4.0/build/bin/opencv-340.jar')
 
 
     compile 'org.codehaus.groovy:groovy-all:2.3.11'

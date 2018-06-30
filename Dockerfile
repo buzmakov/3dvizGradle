@@ -7,7 +7,7 @@ USER root
 COPY ./libraries /app/libraries
 COPY ./build/libs/ /app/
 
-#VOLUME /app/host-opencv/
+VOLUME /app/data/
 
 RUN chmod -R +x /app
 

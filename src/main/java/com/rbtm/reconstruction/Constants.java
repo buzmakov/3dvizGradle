@@ -6,6 +6,10 @@ import java.util.HashMap;
 
 public final class Constants {
 
+    //public static final String DATA_ROOT_DIR = "/home/alop0715/diplom/";
+
+    public static final String DATA_ROOT_DIR = "/app/data/";
+
     //get num of processors in system need for concurency
     public static final int THREAD_NUM = Runtime.getRuntime().availableProcessors(); // количество используемых процессов, по умолчанию используются все
 
@@ -19,9 +23,9 @@ public final class Constants {
     public static final int DEFAULT_MAT_TYPE = CvType.CV_32F; //тип Mat, который используется во всем изображении
     public static final String H5_OBJECT = "Results"; //путь внутри h5 архива, где лежит объект
 
-    public static final String OBJ_PATH = "/home/alop0715/diplom/h5_samples"; //директория, где хранятся h5 архивы
-    public static final String TEMP_IMG_PATH = "/home/alop0715/diplom/tool_result"; //буфер, где хранятся изображения датасета
-    public static final String TEMP_DIR_PATH = "/home/alop0715/diplom/tmp"; // директория, где хранятся технические файлы, созданые во время исполнения скрипта
+    public static final String OBJ_PATH = DATA_ROOT_DIR +"h5_samples"; //директория, где хранятся h5 архивы
+    public static final String TEMP_IMG_PATH = DATA_ROOT_DIR + "tool_result"; //буфер, где хранятся изображения датасета
+    public static final String TEMP_DIR_PATH = DATA_ROOT_DIR + "tmp"; // директория, где хранятся технические файлы, созданые во время исполнения скрипта
 
     //some operations like
     public static final int MAX_NUM_OF_REQUESTS = 4; //количиство одновременно обрабатываемых запросов

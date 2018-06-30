@@ -7,7 +7,7 @@ docker build -t $dockerTag .
 docker run -it -v /home/alop0715/diplom/:/app/data/ -p 4567:4567 $dockerTag
 
 #docker run -it -v /home/alop0715/diplom/:/app/data/ -p 4567:4567 3dvize:latest
-
+# docker tag 3dvize:latest opaapo/3dvize:latest
 
 #java -cp libraries/ \
 #-Xms2596M -Xmx2596M \

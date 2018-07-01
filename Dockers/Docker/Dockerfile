@@ -4,10 +4,11 @@ WORKDIR /app
 
 USER root
 
-COPY ./libraries /app/libraries
-COPY ./build/libs/ /app/
+COPY ../../build/libs /app/
 
 VOLUME /app/data/
+
+COPY ../../libraries /app/libraries
 
 RUN chmod -R +x /app
 

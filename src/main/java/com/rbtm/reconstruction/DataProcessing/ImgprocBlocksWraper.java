@@ -3,6 +3,7 @@ package com.rbtm.reconstruction.DataProcessing;
 import com.rbtm.reconstruction.DataObjects.FilterEntity;
 import org.opencv.core.Mat;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.opencv.core.Size;
@@ -84,9 +85,12 @@ public class ImgprocBlocksWraper {
                 }
         );
 
-        for (int i=0; i< block.size(); i+=val) {
-            block.remove(i);
+        List<Mat> resultBlock = new ArrayList<>();
+        for (int i=0; i< block.size(); ++i) {
+            if(i%val == 0) {
+                resultBlock.add(block.get(i));
+            }
         }
-        return block;
+        return resultBlock;
     }
 }

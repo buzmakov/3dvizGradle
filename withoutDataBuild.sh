@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cat ./Dockers/Docker/Dockerfile > Dockerfile
+
 set -e
 gradle build
 dockerTag=opaapao/3dvize:withoutData

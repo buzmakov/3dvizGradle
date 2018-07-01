@@ -52,9 +52,9 @@ function initScene() {
     width = container.clientWidth
 
 
-    camera = new THREE.PerspectiveCamera( 45, width / height, 1, 2000 );
-    camera.position.z = 50;
-    camera.position.x = 50;
+    camera = new THREE.PerspectiveCamera( 45, width / height, 1, 1000 );
+    camera.position.z = 20;
+    camera.position.x = 20;
     camera.lookAt(0,0,0)
     controls = new THREE.OrbitControls( camera );
 
@@ -62,6 +62,9 @@ function initScene() {
 
     // model
     var manager = new THREE.LoadingManager();
+
+    document.getElementById("circle-chart").style.display = "none";
+    document.getElementById("SurfacesViz").style.display = "block";
 
     var onProgress = function ( xhr ) {
     	if ( xhr.lengthComputable ) {
@@ -82,6 +85,9 @@ function initScene() {
     	object.position.y = 0;
     	object.position.z = 0;
         scene.add( object );
+
+        document.getElementById("circle-chart").style.display = "block";
+        document.getElementById("SurfacesViz").style.display = "none";
     }, onProgress, onError );
 
 
